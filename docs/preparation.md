@@ -30,8 +30,8 @@ Do not wait until the workshop to request access or a licence.
 | JDK 21, not only a JRE | Run `java -version; javac -version` in PowerShell | Both commands report major version `21` |
 | Template access and GitHub connectivity | Run the test clone below | Clone completes without an authentication or network error |
 | Maven Central connectivity | Open <https://repo.maven.apache.org/maven2/> on the workshop network | The Maven repository index is reachable, not blocked by a proxy page |
-| Marketplace contribution permission | Ask the maintainer to confirm that your AGEL account can create a branch and PR in `agel-data-and-ai-temp-poc/ai-dev-marketplace` | The marketplace owner confirms the required permission; only one volunteer uses it live |
-| Hybrid participation | Open the Teams meeting from the invitation and check your audio | You can join and hear the presenter; meeting link: `TODO_TEAMS_JOIN_LINK` |
+| Marketplace contribution permission | After the [marketplace destination](../README.md#marketplace-values) is confirmed, ask the maintainer to confirm that your AGEL account can create a branch and PR there | The marketplace owner confirms the required permission; only one volunteer uses it live |
+| Hybrid participation | Open the workshop invitation in your calendar and check its Teams joining instructions and your audio | You can join and hear the presenter; use the calendar invitation, not a meeting link in this repository |
 
 The JDK check above uses PowerShell command separators. On another shell,
 run `java -version` and `javac -version` as separate commands. Report a
@@ -66,8 +66,9 @@ it would duplicate skill names. You do not need to learn skills or Copilot
 Projects in advance.
 
 For exercise 4, participants need permission to create a branch and PR in
-`agel-data-and-ai-temp-poc/ai-dev-marketplace`. The maintainer confirms access
-before the block and designates one volunteer to perform the single live PR.
+the workshop marketplace. Its address and plugin names live only in the
+[marketplace values](../README.md#marketplace-values). Wait for the maintainer
+to confirm the destination and access; one volunteer performs the single live PR.
 
 ## Optional Jira
 
@@ -79,7 +80,9 @@ requires Jira sign-in or a working Connector.
 ## If a check fails
 
 Send the failed check, the error text and whether you used the AGEL network
-to **`TODO_SUPPORT_CONTACT`** before Monday. Never include a password, token
+to **Martin Sucharda** at
+[martin.sucharda@microsoft.com](mailto:martin.sucharda@microsoft.com)
+before Monday. Never include a password, token
 or authentication code. For a licence error, mention the AGEL account and
 team `github-agl-aiworkshop-copilot-users` through the agreed support route.
 For blocked GitHub or Maven access or JDK installation, AGEL IT owns the fix.

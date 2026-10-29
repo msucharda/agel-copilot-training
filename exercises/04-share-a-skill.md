@@ -12,18 +12,21 @@ the change. An unmerged PR alone is not an available plugin update.
 ## Before the live step
 
 The lecturer names the volunteer and confirms that their AGEL account may
-create a branch and PR in
-`agel-data-and-ai-temp-poc/ai-dev-marketplace`. Do not create a personal
-repository or use a fork as an unapproved substitute.
+create a branch and PR in the **confirmed workshop marketplace**. Its address
+and plugin names are defined only in the
+[marketplace values](../README.md#marketplace-values). Until the destination
+is confirmed, keep this live step pending. Do not create a personal repository
+or use a fork or previous marketplace as a substitute.
 
 The personal assistant's source clone and `assistant-share` must be available.
-The installed `marketplace-maintenance` plugin must supply
+The installed sharing-support plugin must supply
 `marketplace-create-skill` and `marketplace-submit-update`; these perform
 placement, validation, versioning and submission after `assistant-share`
 prepares the candidate. Confirm all three skills before the volunteer starts.
-The lecturer confirms the target plugin and its current version:
-**`TODO_SHARED_PLUGIN`**. Do not treat the existing `ai-dev` or
-`marketplace-maintenance` plugin as the target without confirmation.
+The lecturer confirms the shared plugin and version in that same README
+section. Do not treat another existing plugin as the target without confirmation.
+The template's `assistant-share` instructions must point at this confirmed
+destination too; stop if they still name an old repository.
 
 ## 1. Prepare a useful contribution (16:00-16:10, 10 minutes)
 
@@ -41,8 +44,9 @@ the designated volunteer proceeds to publication.
 The volunteer asks in their assistant session:
 
 ```text
-Use assistant-share to prepare this reviewed skill for
-agel-data-and-ai-temp-poc/ai-dev-marketplace.
+Use assistant-share to prepare this reviewed skill for the workshop
+marketplace confirmed in the workshop README's Marketplace values.
+Read that setting and confirm the exact destination with me before acting.
 Inspect the target plugin and its contribution instructions. Show me the
 files, English description and version/catalog changes before publishing.
 After I review the exact change, create one branch and one PR in that
@@ -56,7 +60,7 @@ reported permission or validation failure.
 `assistant-share` preserves the personal original and prepares its candidate
 in `sharing/<name>/`. The marketplace skills own the final shared name.
 Choose a name distinct from participants' personal example skills and record
-it as **`TODO_SHARED_SKILL`** until confirmed. This prevents a personal copy
+it in the README's Shared skill setting when confirmed. This prevents a personal copy
 from masking the plugin's skill during the update check.
 
 Show the PR URL, diff and validation result. The marketplace owner reviews
@@ -70,18 +74,13 @@ using `assistant-share`, not a screenshot of a prepared draft.
 ## 3. Update after publication (16:25-16:35, 10 minutes)
 
 Wait for the owner to confirm that the PR is merged and the new plugin
-version is published. Record the actual plugin name and version in place of
-`TODO_SHARED_PLUGIN`. In a Copilot app session, use:
-
-```text
-/plugin marketplace update ai-dev-marketplace
-/plugin update TODO_SHARED_PLUGIN
-```
-
-Participants who do not already have that plugin use
-`/plugin install TODO_SHARED_PLUGIN@ai-dev-marketplace` after the catalogue
-update instead. Start a **new session**, inspect `/skills`, and invoke the
-shared **`TODO_SHARED_SKILL`** on the same small example.
+version is published. Record its actual name/version in the README's Shared
+plugin setting. Follow the
+[marketplace update commands](../README.md#marketplace-commands), using that
+single source for the catalogue and plugin names. Participants who do not yet
+have the plugin use the install form documented there after refreshing the
+catalogue. Start a **new session**, inspect `/skills`, and invoke the recorded
+shared skill on the same small example.
 
 **Checkpoint:** someone other than the author can load and use the published
 version. An old session or a local copy of the author's skill is not evidence

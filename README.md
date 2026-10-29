@@ -60,7 +60,8 @@ inside the available viewport.
 ## Release status and unresolved integration values
 
 **Draft for review, not the final preparation message.** Do not send the email
-or run a command containing `TODO`. The maintainer replaces the following
+or run a command containing `TODO` or an unresolved `<placeholder>`.
+The maintainer replaces the following
 values after checking the sibling repositories and Friday's test results.
 Development repositories below are references, not participant clone targets.
 
@@ -72,17 +73,53 @@ Development repositories below are references, not participant clone targets.
 | `TODO_BUG_TASK` | Existing `.scratch/` bug task filename and baseline symptom | Sample app session |
 | `TODO_FEATURE_TASK` | Existing `.scratch/` larger-feature brief, ending at tickets | Sample app session |
 | `TODO_PROJECT_TASK_A`, `TODO_PROJECT_TASK_B`, `TODO_PROJECT_TASK_C` | Two required and one optional existing `.scratch/` tasks with compatible acceptance criteria | Sample app session |
-| `TODO_MATT_POCOCK_PLUGIN` | Published AGEL plugin name containing all vendored Matt Pocock skills | Coordinator |
-| `TODO_SHARED_PLUGIN` | Actual participant-share plugin name and version after review/merge | Template/marketplace owner |
-| `TODO_SHARED_SKILL` | Published shared skill name, distinct from participants' personal example names | Marketplace owner |
-| `TODO_DEMO_SPEC`, `TODO_DEMO_TICKETS`, `TODO_DEMO_SESSIONS`, `TODO_DEMO_REVIEW_MERGE` | One coherent existing DevSecOps example with inspectable spec, tickets, sessions, review and merge evidence | Lecturer |
-| `TODO_TEAMS_JOIN_LINK` | Meeting link from the invitation | Maintainer |
-| `TODO_SUPPORT_CONTACT` | Named preparation contact and route from the invitation | Maintainer |
 
-The marketplace is
-`agel-data-and-ai-temp-poc/ai-dev-marketplace`, registered as
-`ai-dev-marketplace`. Its existing `ai-dev` plugin is **not** a substitute
-for the pending Matt Pocock plugin.
+## Marketplace values
+
+**This is the only place defining marketplace addresses and plugin names.**
+The maintainer is preparing a new marketplace; its address and the vendored
+Matt Pocock plugin name are not confirmed. The sharing destination also
+awaits confirmation. No participant should check permission against a guessed
+repository or submit a PR until the coordinator confirms these values.
+
+| Setting | Value | Evidence needed |
+|---|---|---|
+| Marketplace repository (`owner/repo`) | `TODO_MARKETPLACE_REPOSITORY` | Coordinator-confirmed address and sharing destination |
+| Installed catalogue name | `TODO_MARKETPLACE_NAME` | Name reported by the confirmed marketplace catalogue |
+| Matt Pocock plugin | `TODO_MATT_POCOCK_PLUGIN` | Published plugin containing all his vendored skills |
+| Sharing support plugin | `TODO_SHARING_SUPPORT_PLUGIN` | Provides `marketplace-create-skill` and `marketplace-submit-update` for the confirmed destination |
+| Shared plugin and version | `TODO_SHARED_PLUGIN` | Name/version published after the exercise-4 PR is reviewed and merged |
+| Shared skill | `TODO_SHARED_SKILL` | Published name distinct from participants' personal example names |
+
+Other materials refer to these settings rather than repeating their values.
+Do not install an unrelated existing plugin as a substitute, or install the
+upstream `mattpocock/skills` plugin alongside the vendored copy.
+
+### Marketplace commands
+
+In a Copilot app session, replace each bracketed field with its confirmed
+setting above. These are command shapes, **not executable final commands**.
+Verify them against the new marketplace's README before the workshop.
+
+```text
+/plugin marketplace add <marketplace-repository>
+/plugin marketplace browse <catalogue-name>
+/plugin install <matt-pocock-plugin>@<catalogue-name>
+/plugin install <sharing-support-plugin>@<catalogue-name>
+```
+
+After exercise 4's owner-approved merge and publication:
+
+```text
+/plugin marketplace update <catalogue-name>
+/plugin update <shared-plugin>
+```
+
+For someone who has not installed the shared plugin yet, use
+`/plugin install <shared-plugin>@<catalogue-name>` after refreshing the
+catalogue. Start a new session and check `/skills`.
+
+## Template alignment
 
 The template interface is aligned with
 [msucharda/copilot-assistant-template#2](https://github.com/msucharda/copilot-assistant-template/pull/2):
@@ -92,6 +129,8 @@ skills live in `.agents/skills/`, and personal installation uses `gh skill
 install --from-local`. The published AGEL clone and desktop-app installation
 still need Friday's live verification. The app bundles `gh`; do not add a
 separate CLI prerequisite to the preparation message.
+Its sharing instructions must also match the confirmed marketplace
+destination; do not follow a stale hard-coded target from a template version.
 
 ## Publication
 

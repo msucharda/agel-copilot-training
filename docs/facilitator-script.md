@@ -55,26 +55,72 @@ marketplace availability do not block this introduction.
 **Goal:** show one person directing intent -> spec -> tickets -> sessions ->
 review -> merge, before explaining the mechanics.
 
-Use the existing DevSecOps Project and a coherent example already present
-there. The read-only reference repository is `D:\git\devsecops-platform`.
-Select actual example links/commits while preparing the demo:
-**`TODO_DEMO_SPEC`**, **`TODO_DEMO_TICKETS`**, **`TODO_DEMO_SESSIONS`**,
-**`TODO_DEMO_REVIEW_MERGE`**. Do not fabricate a completed history.
-Use completed, inspectable work rather than depending on a fresh long build
-or a cloud change during the talk.
+Use **the local-CI performance story, 27-28 October 2026**, in the existing
+Project for [msucharda/devsecops-platform](https://github.com/msucharda/devsecops-platform).
+The read-only local reference is `D:\git\devsecops-platform`.
+Show completed work and its recorded evidence; do not start a fresh overnight
+run or make a cloud change during the talk.
+
+### Main story: from a slow feedback loop to three integrated changes
+
+**All times in this main story are CET (UTC+1).** The maintainer supplied the
+Project/session timeline. Issue creation and PR creation/merge timestamps
+were cross-checked against GitHub.
+
+| Date and time | Open / explain |
+|---|---|
+| 27 Oct, 20:19 | User intent in the Project, English translation: "Once the current work finishes, we must focus on local CI speed. It cannot continue like this." |
+| 27 Oct, 20:35 | Analysis session: "Local CI speed: analysis and proposal" (English translation of its title). |
+| 27 Oct, 21:28 | The maintainer delegates autonomous work and goes offline. This is a scope decision, not evidence that every later question has already been answered. |
+| 27 Oct, 21:29 | New specification in [msucharda/devsecops-platform#134](https://github.com/msucharda/devsecops-platform/issues/134), alongside existing [msucharda/devsecops-platform#107](https://github.com/msucharda/devsecops-platform/issues/107). |
+| 27 Oct, 21:31 | Three parallel sessions: the local gate, mutation-runtime work, and action pins with Dependabot. |
+| 27 Oct, 21:54 / 22:00 / 23:50 | PRs open: action pins [msucharda/devsecops-platform#135](https://github.com/msucharda/devsecops-platform/pull/135), mutation runtime [msucharda/devsecops-platform#137](https://github.com/msucharda/devsecops-platform/pull/137), local gate [msucharda/devsecops-platform#138](https://github.com/msucharda/devsecops-platform/pull/138), respectively. |
+| Overnight | Sessions surface TDD interface confirmations and align the shared `LOCAL_CI_WORKER_BUDGET` contract. The maintainer reports that a `security-checkpoint` review found a High finding in the action-pins PR. Show the actual question/review and its disposition; do not treat a question or finding as resolved merely because work continued. |
+| 28 Oct, 08:54 / 09:08 / 09:28 | Merges, respectively: mutation runtime [msucharda/devsecops-platform#137](https://github.com/msucharda/devsecops-platform/pull/137), action pins [msucharda/devsecops-platform#135](https://github.com/msucharda/devsecops-platform/pull/135), local gate [msucharda/devsecops-platform#138](https://github.com/msucharda/devsecops-platform/pull/138). |
+
+The intent becomes observable requirements in the local-gate issue: broad
+Windows pre-push runs had taken 90-95 minutes; the requested local-feedback
+target is five minutes p95. **That target is not a measured result.** Open
+the PR's actual measurements before claiming a speed-up.
+
+Keep the lanes distinct: the local-gate issue leads to the local-gate PR;
+the existing mutation issue leads to the mutation-runtime PR; action pins
+are the third session. Show how a shared worker-budget contract crosses
+session boundaries without turning the sessions into a team exercise.
 
 | Time | Demonstration cue | Human decision to point out |
 |---|---|---|
-| 09:15-09:20 | Open the existing Copilot Project. Show the starting intent and the resulting change. "Here is the result; now trace how we got it." | What outcome was worth pursuing? |
-| 09:20-09:27 | Open `CONTEXT.md` and one relevant `docs/adr/` record, then the selected spec. Show a clarified ambiguity and acceptance criterion. | The agent asks; the human decides the intended behaviour. |
-| 09:27-09:34 | Show the selected tickets and their dependencies. `AGENTS.md` points to `docs/agents/issue-tracker.md` and domain documentation. | Which work can start independently? Which must wait? |
-| 09:34-09:44 | Show 2-3 real sessions, their assignments and distinct worktrees. Open a session question and its resulting scope correction. | The Project helps one person coordinate agents; it does not remove that person's decisions. |
-| 09:44-09:54 | Show a real diff, local validation evidence and review feedback with its disposition, then the actual recorded merge result. | A convincing narrative is not evidence that the change works. |
-| 09:54-10:00 | Ask participants to identify one reusable workflow and one decision they would keep. Preview exercise 3's local-only variant. | More simultaneous sessions are useful only when tasks can be reviewed and integrated. |
+| 09:15-09:20 | Show the three merged PRs, then return to the 20:19 intent. "Here is the result; now trace how we got it." | What outcome was worth pursuing? |
+| 09:20-09:27 | Open `CONTEXT.md`, a relevant ADR and the local-gate issue. Contrast a speed complaint with the five-minute p95 acceptance target. | The agent analyses; the human chooses the intended outcome. |
+| 09:27-09:34 | Open the existing mutation issue and the three task/PR lanes above. Show dependencies rather than implying all three solve the same issue. | Which work can start independently? Which contract must be shared? |
+| 09:34-09:44 | Show the three real sessions and their worktrees. Inspect a TDD confirmation and the `LOCAL_CI_WORKER_BUDGET` agreement. | Autonomy still produces questions; distinguish answered, pending and completed work. |
+| 09:44-09:54 | Show the review's High finding and disposition, a real diff, validation evidence and the next-morning merges. Stay on how agents help, not implementation details of the controls. | A review can change the work; a completed narrative is not proof of correctness. |
+| 09:54-09:57 | Use the retrospective supplement below to show agents improving the workflow itself. | Hypotheses become useful only after evidence and a bounded change. |
+| 09:57-10:00 | Ask for one reusable workflow and one retained human decision; preview exercise 3's local-only variant. | More sessions help only if their results can be reviewed and integrated. |
 
 The reference repository uses domain terms from `CONTEXT.md`, relevant ADRs
 and tracker instructions. Show those relationships without copying its
 project-specific instructions into participants' assistants.
+
+### Supplement for agenda point 3: agents improve the way you work
+
+Use this as the three-minute morning supplement and recall it briefly at
+14:45. **These events are on 22-23 October and use CEST (UTC+2), not CET.**
+
+| Date and time | Evidence / teaching cue |
+|---|---|
+| 22 Oct, 16:39 | The maintainer asks for a deep retrospective across sessions. Parallel subagents produce hypotheses H4 and H7. A hypothesis is not yet a verified finding. |
+| 22 Oct, before 19:16 | Experiments turn the hypotheses into bounded specifications. Ask what observation would support or reject a proposed workflow change. |
+| 22 Oct, 19:16 | Resulting issues: local-CI workflow [msucharda/devsecops-platform#84](https://github.com/msucharda/devsecops-platform/issues/84) and merge workflow [msucharda/devsecops-platform#85](https://github.com/msucharda/devsecops-platform/issues/85). |
+| 23 Oct, 11:10 | Local-CI workflow PR [msucharda/devsecops-platform#93](https://github.com/msucharda/devsecops-platform/pull/93) merges. |
+| 23 Oct, 11:52 | Merge-workflow PR [msucharda/devsecops-platform#90](https://github.com/msucharda/devsecops-platform/pull/90) merges. |
+| Same retrospective | The maintainer reports that `issue-kickoff` and `security-checkpoint` also emerged as reusable skills. Show their purpose, not a separate implementation lecture. |
+
+The Project/session sequence and skill origins above are maintainer-provided;
+GitHub verifies the issue/PR references and timestamps. Do not assign H4 or
+H7 to an individual issue without the retrospective evidence. The lesson is
+one person using agents to analyse friction, test a hypothesis, specify a
+change and retain a useful procedure.
 
 **Fallback:** if the live Project or network is unavailable, walk through a
 previously saved, approved view of the same spec, tickets, session assignments,
@@ -97,21 +143,16 @@ Open [the 12-slide deck](../slides/agentic-workshop.html).
 | 10:15-10:18 | 10-12: Project worktrees, sharing, day map | "Create your own Project later; first build the assistant." |
 | 10:18-10:30 | Install the AGEL marketplace and vendored Matt Pocock plugin; open a new session and check skills. | "Install the AGEL copy only, not the upstream plugin as well." |
 
-The local marketplace's `marketplace-install` skill documents `/plugin`
-commands in app sessions. After resolving `TODO_MATT_POCOCK_PLUGIN`, use:
-
-```text
-/plugin marketplace add agel-data-and-ai-temp-poc/ai-dev-marketplace
-/plugin marketplace browse ai-dev-marketplace
-/plugin install TODO_MATT_POCOCK_PLUGIN@ai-dev-marketplace
-/plugin install marketplace-maintenance@ai-dev-marketplace
-```
+Use the single [marketplace values and commands](../README.md#marketplace-values)
+section. The new address, catalogue and plugin names await confirmation.
+Do not reuse a previous marketplace address or execute its unresolved
+command shapes. Check the confirmed marketplace's README before installation.
 
 Start a new session and inspect `/skills`. Confirm the actual vendored skills,
 including the ones required by the app exercise, plus `marketplace-create-skill`
 and `marketplace-submit-update` for sharing. Record the plugin versions.
 If the catalogue does not contain the expected plugin, stop rather than
-installing `ai-dev` as a substitute or adding upstream `mattpocock/skills`.
+installing another plugin as a substitute or adding upstream `mattpocock/skills`.
 
 **Fallback:** the deck is self-contained and opens offline. If marketplace
 registration or installation fails, show the reviewed local skill source and
@@ -188,6 +229,9 @@ neither marketplace nor Connector is needed for the break.
 
 Open [exercise 3](../exercises/03-copilot-project.md).
 This block covers how one person gets help from agents, not team roles.
+Recall the morning retrospective: the agent can help identify friction in
+your own workflow as well as implement a task. Keep the exercise's 75-minute
+schedule unchanged.
 
 | Time | Facilitation cue | Checkpoint |
 |---|---|---|
@@ -216,7 +260,7 @@ This is the single live participant PR, not a new repository exercise.
 |---|---|---|
 | 16:00-16:10 | Everyone prepares a general-purpose skill; designate one volunteer with marketplace branch/PR permission. | Reviewed English content and an identified target plugin. |
 | 16:10-16:25 | Volunteer invokes `assistant-share`, inspects the preview, confirms publication and creates one real PR. | Actual marketplace URL, validation and version/catalog changes. |
-| 16:25-16:35 | Marketplace owner reviews/merges; after publication, others update `TODO_SHARED_PLUGIN`, open a new session and try the skill. | Another participant can invoke the published version. |
+| 16:25-16:35 | Marketplace owner reviews/merges; after publication, others update the shared plugin recorded in the README, open a new session and try the skill. | Another participant can invoke the published version. |
 | 16:35-16:40 | Optional read-only Jira example through Atlassian Rovo, only if available. | Identify intent and acceptance criteria; no mandatory dependency. |
 
 The marketplace owner decides whether to merge. Do not present an unmerged
@@ -249,16 +293,19 @@ Verified against the maintainer's read-only local references:
 - DevSecOps `AGENTS.md`, `CONTEXT.md`, `docs/agents/domain.md` and
   `docs/agents/issue-tracker.md`: domain vocabulary/ADRs before exploration,
   GitHub issues and explicit tracker conventions.
-- Marketplace `README.md`,
+- Legacy marketplace reference `README.md`,
   `plugins/marketplace-maintenance/skills/marketplace-install/SKILL.md` and
   `.github/plugin/marketplace.json`: app `/plugin` install/update, new-session
-  availability, `ai-dev-marketplace` catalogue, versioned plugin publication.
+  availability and versioned plugin publication. This is prior reference
+  evidence, not the pending workshop marketplace's address or an installation
+  target.
 
 The template instructions are aligned with
 [msucharda/copilot-assistant-template#2](https://github.com/msucharda/copilot-assistant-template/pull/2):
 `.agents/skills/` source, local commits, preview `gh skill install`,
 `AGENTS.md` scope and the two marketplace-maintenance handoff skills.
-The published app PR, pending Matt Pocock plugin and Friday's observations
-still need integration. The app `/plugin` route is documented by the
-marketplace reference, but has not yet been verified in the AGEL desktop-app
-test. These notes are not a Friday checklist.
+The published app PR, confirmed marketplace and Friday's observations still
+need integration. Align the template's sharing target with the coordinator's
+confirmation before exercise 4. The app `/plugin` route is documented by the
+legacy reference, but the new marketplace and AGEL desktop-app test remain
+unverified. These notes are not a Friday checklist.

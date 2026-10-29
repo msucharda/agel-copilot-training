@@ -9,7 +9,8 @@ The maintainer sends this message; no automation sends it.
 Hello,
 
 Our workshop is on **Monday 2 November, 09:00-17:00 CET**, at Svätoplukova 2A,
-Bratislava, and on Teams: `TODO_TEAMS_JOIN_LINK`.
+Bratislava, and on Teams. **Use the joining instructions in your calendar
+invitation.**
 
 Before Monday, install the **GitHub Copilot desktop app**, sign in with your
 **AGEL GitHub account**, install **Git** and **JDK 21**, and test-clone the
@@ -28,7 +29,8 @@ AGEL skills together, so do not separately install the upstream
 `mattpocock/skills` plugin. Jira access through the Atlassian Rovo Connector
 is optional.
 
-If a preparation check fails, send its error text to `TODO_SUPPORT_CONTACT`.
+If a preparation check fails, send its error text to **Martin Sucharda** at
+[martin.sucharda@microsoft.com](mailto:martin.sucharda@microsoft.com).
 Do not send credentials. Bring the laptop you used for the checks.
 
 See you on Monday.
