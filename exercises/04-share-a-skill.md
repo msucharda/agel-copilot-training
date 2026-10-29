@@ -49,27 +49,48 @@ the designated volunteer proceeds to publication.
 ## 2. Preview and create one live PR (16:10-16:25, 15 minutes)
 
 The volunteer copies the **Marketplace repository** value from the workshop
-README into `<confirmed-destination>` below before sending the prompt in
-their assistant session. Do not send it while the setting is still `TODO`.
+README into `<confirmed-destination>` below. Confirm two distinct absolute paths:
+`<assistant-root>` for the personal assistant clone and `<marketplace-root>`
+for the marketplace checkout. Clone the confirmed marketplace into its own
+local folder if necessary; this does not create a GitHub repository.
+Replace both path placeholders before sending the prompt in the assistant
+session. Do not send it while the destination is still `TODO`.
 The assistant repository's own README is not the workshop settings source.
 
 ```text
 Use assistant-share to prepare this reviewed skill for <confirmed-destination>.
+Assistant clone: <assistant-root>
+Marketplace clone: <marketplace-root>
 This is the destination confirmed in the workshop README.
 Compare it with the template's sharing instructions and stop if they differ.
 Confirm the exact destination with me before acting.
+Before any marketplace edit, verify its checkout and record its base with:
+git -C "<marketplace-root>" rev-parse --show-toplevel
+git -C "<marketplace-root>" rev-parse HEAD
+Use that marketplace base, never the assistant clone's HEAD.
+Retain the absolute candidate path, both roots, confirmed destination, recorded
+base, approved shared name, behavior, version changes and stop point across
+confirmation turns.
 Inspect the target plugin and its contribution instructions. Show me the
 files, English description and version/catalog changes before publishing.
-Use the marketplace's prescribed participant-contribution plugin, not the
-vendored collection. Record the base commit before editing. Run its npm
-tests and validators, including version comparison against that base.
+Invoke marketplace-create-skill with this handoff, targeting the prescribed
+participant-contribution plugin, not the vendored collection. Invoke
+marketplace-submit-update with the same root and recorded base; if the
+creation skill already invoked submission, continue it instead of submitting
+twice. Reading a skill file or implementing it inline is not invocation.
+Set the marketplace checkout as the working directory in every shell call
+that runs npm or the validator. Await each command and stop on a failed check.
+Run its npm tests and validators, comparing versions against the recorded base.
 After I review the exact change, create one branch and one PR in that
 marketplace repository. Do not create a participant repository or merge.
 ```
 
 The volunteer reviews the proposed files and confirms the live branch/PR
 step. Follow the skill's actual instructions; do not manually bypass a
-reported permission or validation failure.
+reported permission or validation failure. The first Git command must return
+the confirmed marketplace root; the second supplies its base commit before
+any marketplace edit. Keep the candidate in the assistant clone, not the
+marketplace checkout.
 
 `assistant-share` preserves the personal original and prepares its candidate
 in `sharing/<name>/`. The marketplace skills place the approved candidate at
@@ -82,8 +103,14 @@ it in the README's Shared skill setting when confirmed. This prevents a personal
 from masking the plugin's skill during the update check.
 
 The create/submit skills own the marketplace clone and checks, not the
-personal assistant clone. In that marketplace clone, record the base commit
-**before edits**, then follow the documented commands:
+personal assistant clone. Use `git -C "<marketplace-root>"` for marketplace
+Git commands. For **every separate shell call**, set its working directory
+to that verified root before running one of the commands below. In Windows
+PowerShell, start each call with
+`Set-Location -LiteralPath "<marketplace-root>" -ErrorAction Stop`;
+in a Unix shell, use `cd "<marketplace-root>" &&`.
+A previous call's directory change does not carry into the next call.
+Record the base **before edits**, then follow the documented commands:
 
 ```shell
 npm ci
@@ -92,8 +119,11 @@ npm run validate
 node scripts/validate.mjs --base <recorded-base-commit-sha>
 ```
 
-Replace the last field with the recorded SHA; do not compare a change with
-itself. Validation is offline only **after** dependency installation.
+Await each command to completion before starting the next. If it fails,
+report its command, working directory and error before correcting the cause;
+do not skip the check or invent package files after an install failure.
+Replace the last field with the recorded marketplace SHA; do not compare a
+change with itself. Validation is offline only **after** dependency installation.
 Use the documented SemVer rule: fixes patch, new capabilities minor,
 incompatible changes major. Update the changed plugin's
 `.github/plugin/plugin.json` and its matching catalogue entry together.

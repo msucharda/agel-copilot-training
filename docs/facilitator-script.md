@@ -287,7 +287,7 @@ This is the single live participant PR, not a new repository exercise.
 | Time | Facilitation cue | Checkpoint |
 |---|---|---|
 | 16:00-16:10 | Everyone prepares a general-purpose skill; confirm the volunteer's permission, Node/npm and dependency access. | English contribution targets the sharing-support plugin, not the vendored skills. |
-| 16:10-16:25 | Volunteer invokes `assistant-share` and the create/submit handoffs; inspect the preview, both version entries, tests/validation and one real PR. | Marketplace validation and green contribution CI; participant stops before merge. |
+| 16:10-16:25 | Volunteer invokes `assistant-share`; confirm distinct absolute assistant/marketplace roots and the base captured with `git -C` in the marketplace checkout. Follow the create/submit handoff in exercise 4; inspect the preview, both version entries, checks and one real PR. | Every npm/validator call uses the marketplace working directory; contribution CI is green and the participant stops before merge. |
 | 16:25-16:35 | Marketplace owner reviews/merges; after publication, others update the shared plugin using the app UI, open a new session and try the skill. | Another participant can invoke the published version; no assumed `copilot` PATH command. |
 | 16:35-16:40 | Optional read-only Jira example through Atlassian Rovo, only if available. | Identify intent and acceptance criteria; no mandatory dependency. |
 

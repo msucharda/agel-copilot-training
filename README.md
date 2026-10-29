@@ -105,14 +105,14 @@ access or a successful install; those live checks remain open.
 | Marketplace repository (`owner/repo`) | [agel-data-and-ai-temp-poc/copilot-marketplace](https://github.com/agel-data-and-ai-temp-poc/copilot-marketplace) | Confirm participant access and permission to create a branch and PR here |
 | Installed catalogue name | `copilot-marketplace` | Confirmed by the coordinator; verify the installed catalogue |
 | Matt Pocock plugin | `matt-pocock-skills` | Source version **0.1.0**, 27 vendored skills |
-| Sharing support plugin | `marketplace-maintenance` | Source version **0.3.0**; also the target for participant-authored contributions |
+| Sharing support plugin | `marketplace-maintenance` | Source version **0.4.1**; also the target for participant-authored contributions |
 | Shared plugin version | `TODO_SHARED_VERSION` | Actual higher version of the sharing-support plugin after owner-approved merge/publication |
 | Shared skill | `TODO_SHARED_SKILL` | Published name distinct from participants' personal example names |
 
 Other materials refer to these settings rather than repeating their values.
 Do not install an unrelated existing plugin as a substitute, or install the
 upstream `mattpocock-skills@mattpocock` plugin alongside the vendored copy.
-Marketplace source is pinned at `b7510db7dd83577844239674d5c4fbab31500b5d`.
+Marketplace source is pinned at `8ebab29e1df7f41bbafe19d3f46dae3bb9704240`.
 
 ### Marketplace installation and updates
 
@@ -211,7 +211,7 @@ skills live in `.agents/skills/`, and personal installation uses `gh skill
 install --from-local`. The published AGEL clone and desktop-app installation
 still need Friday's live verification. The app bundles `gh`; do not add a
 separate CLI prerequisite to the preparation message.
-At template head `d873f8747d7c1cdf1b4b1e9fb254c038f471cc93`, both its README
+At template head `b942b7c2afcfca535c2b44d53ae62b249b786f5b`, both its README
 and `assistant-share` use the confirmed marketplace destination above.
 Recheck the published template version before the live exercise.
 
