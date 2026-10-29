@@ -41,12 +41,16 @@ the designated volunteer proceeds to publication.
 
 ## 2. Preview and create one live PR (16:10-16:25, 15 minutes)
 
-The volunteer asks in their assistant session:
+The volunteer copies the **Marketplace repository** value from the workshop
+README into `<confirmed-destination>` below before sending the prompt in
+their assistant session. Do not send it while the setting is still `TODO`.
+The assistant repository's own README is not the workshop settings source.
 
 ```text
-Use assistant-share to prepare this reviewed skill for the workshop
-marketplace confirmed in the workshop README's Marketplace values.
-Read that setting and confirm the exact destination with me before acting.
+Use assistant-share to prepare this reviewed skill for <confirmed-destination>.
+This is the destination confirmed in the workshop README.
+Compare it with the template's sharing instructions and stop if they differ.
+Confirm the exact destination with me before acting.
 Inspect the target plugin and its contribution instructions. Show me the
 files, English description and version/catalog changes before publishing.
 After I review the exact change, create one branch and one PR in that
