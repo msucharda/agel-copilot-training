@@ -27,7 +27,9 @@ Do not wait until the workshop to request access or a licence.
 | AGEL account | Open the app's account/profile view | The signed-in identity is your AGEL GitHub account |
 | Copilot entitlement | Send `Reply with READY.` in a new app chat | Copilot responds; there is no licence or sign-in error |
 | Git | Run `git --version` in a terminal | A Git version is printed |
+| App-bundled GitHub CLI | In an app chat, ask `Run gh --version in this session's shell and show its first output line.` | Actual output reports `gh` version **2.102.1 or higher** |
 | JDK 21, not only a JRE | Run `java -version; javac -version` in PowerShell | Both commands report major version `21` |
+| Linux only: wrapper utilities | Run `command -v unzip && (command -v sha256sum || command -v shasum)` in a Linux shell | Paths are printed for `unzip` and at least one supported checksum tool |
 | Template access and GitHub connectivity | Run the test clone below | Clone completes without an authentication or network error |
 | Maven Central connectivity | Open <https://repo.maven.apache.org/maven2/> on the workshop network | The Maven repository index is reachable, not blocked by a proxy page |
 | Marketplace contribution permission | Ask the maintainer to confirm that your AGEL account can create a branch and PR in the [workshop marketplace](../README.md#marketplace-values) | The marketplace owner confirms the required permission; only one volunteer uses it live |
@@ -36,11 +38,18 @@ Do not wait until the workshop to request access or a licence.
 The JDK check above uses PowerShell command separators. On another shell,
 run `java -version` and `javac -version` as separate commands. Report a
 different major version instead of assuming that it is sufficient.
+The tested Windows desktop app puts its bundled Git and `gh` on the agent
+shell's PATH. Check `gh` inside the app, not an unrelated terminal.
+Do not install `gh` separately; report a missing/older bundled version to
+the lecturer. Linux participants must also pass the conditional utilities
+check above; Windows participants do not need those Linux tools.
+
 The Maven Central browser check verifies reachability, not a successful app
 build; the sample app build is checked in exercise 2. That app uses Java 21
 and its bundled Maven wrapper; do not install Maven or a database server
 separately. The [sample-app instructions](../exercises/02-sample-app.md)
 contain the actual AGEL clone and Windows/Unix wrapper commands.
+Python is not required.
 
 ### Test clone
 
@@ -64,7 +73,11 @@ Do not fork the template or create a remote participant repository.
 ## Skills and marketplace
 
 We install the AGEL marketplace and the vendored Matt Pocock plugin together
-at 10:00. Do not install the upstream `mattpocock-skills@mattpocock` plugin in addition:
+at 10:00 using the **desktop app's marketplace/plugin UI**. Its exact labels
+and navigation await Friday's trial. No standalone Copilot CLI installation
+is required; the SDK runtime bundled in the app is not a `copilot` command
+on the tested agent shell's PATH.
+Do not install the upstream `mattpocock-skills@mattpocock` plugin in addition:
 it would duplicate skill names. You do not need to learn skills or Copilot
 Projects in advance.
 

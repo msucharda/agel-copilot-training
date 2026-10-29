@@ -70,7 +70,7 @@ after Friday's test. Do not substitute development copies for AGEL targets.
 | `TODO_FRIDAY_RESULTS` | Results of Friday's rehearsal and resulting preparation changes | Coordinator |
 | `TODO_PARTICIPANT_OS` | Participant operating systems and the observed wrapper/install procedures | Coordinator |
 | `TODO_AGEL_ACCESS` | Published AGEL copies and participant account access | Coordinator |
-| `TODO_DESKTOP_PLUGIN_TRIAL` | Actual desktop Customize controls, install/update route, fresh-session discovery and manual-only slash invocation of plugin-provided skills | Lecturers |
+| `TODO_DESKTOP_PLUGIN_TRIAL` | Actual desktop UI labels, install/update route, fresh-session discovery and manual-only slash invocation of plugin-provided skills | Lecturers |
 | `TODO_VOLUNTEER` | One participant with marketplace branch/PR permission, Node.js 22+ and npm | Maintainer |
 | `TODO_NPM_ACCESS` | That volunteer can complete `npm ci` using an approved npm registry route or cache | Volunteer / AGEL IT |
 
@@ -114,20 +114,45 @@ Do not install an unrelated existing plugin as a substitute, or install the
 upstream `mattpocock-skills@mattpocock` plugin alongside the vendored copy.
 Marketplace source is pinned at `b7510db7dd83577844239674d5c4fbab31500b5d`.
 
-### Marketplace commands
+### Marketplace installation and updates
 
-In the **desktop app**, inspect **Customize** for marketplace/plugin controls.
-Their exact route and behavior remain part of the desktop-plugin trial above; a terminal
-command being documented is not evidence that the desktop controls work.
+**The desktop UI is the primary route.** The app has its own marketplace
+registration, catalogue browsing, plugin installation and update management.
+Exact UI labels and navigation remain unverified until Friday; the actions
+below describe the procedure, not confirmed button names.
+
+1. Open the app's marketplace/plugin management and add the Marketplace
+   repository from the table above. Choose the AGEL GitHub account or approved
+   system Git credentials when the app offers authentication.
+2. Browse that catalogue and install the sharing-support and Matt Pocock
+   plugins named above. Do not add the upstream duplicate.
+3. Start a fresh desktop session. Inspect the installed versions and skills:
+   `marketplace-install`, `marketplace-create-skill`, `marketplace-submit-update`,
+   `/setup-matt-pocock-skills`, `/grill-with-docs`, `/to-spec`, `/to-tickets`,
+   `diagnosing-bugs`, `tdd` and `code-review`. Listing is not invocation proof;
+   apply the trial gate below.
+
+After exercise 4's owner-approved merge/publication, refresh the catalogue
+and update the changed sharing-support plugin **in the app UI**. Someone who
+does not have it installed uses that UI's installation action. Record the
+observed higher version, start a fresh session and invoke the shared skill.
+
+### CLI fallback: separately installed only
+
+If you already have a separately installed Copilot CLI, you may use its
+plugin-management commands below as a fallback. Check `copilot --version`
+first. Copilot CLI is not a participant prerequisite, and the coding/skill
+exercises still run in the desktop app.
+
+On the tested Windows app, the SDK-bundled `copilot.exe` is
+not on the agent shell's PATH. Do not locate its private runtime or change
+PATH to make these commands work. App and CLI share `installedPlugins` in
+`~/.copilot/config.json`, so CLI-installed plugins are visible in the app;
+do not edit that configuration by hand.
+
 Do not treat the interactive CLI's `/plugin` or `/skills` as verified
-desktop-app commands, or switch participants to another client.
-For lecturer-only CLI skill checks, use interactive mode, not non-interactive
-`-p` invocation. This does not change the workshop client.
-
-These are the new marketplace's documented **terminal** commands, for the
-lecturer to verify through the app's session terminal before live use.
-They do not add a standalone CLI installation to participant preparation.
-If the tool is unavailable there, report the installation checkpoint blocked.
+desktop-app commands. For lecturer-only CLI skill checks,
+use interactive mode, not non-interactive `-p` invocation.
 
 ```shell
 copilot plugin marketplace add agel-data-and-ai-temp-poc/copilot-marketplace
@@ -137,21 +162,14 @@ copilot plugin install matt-pocock-skills@copilot-marketplace
 copilot plugin list
 ```
 
-Start a fresh desktop session. Inspect its available skills and confirm
-`marketplace-install`, `marketplace-create-skill`, `marketplace-submit-update`,
-`/setup-matt-pocock-skills`, `/grill-with-docs`, `/to-spec`, `/to-tickets`,
-`diagnosing-bugs`, `tdd` and `code-review`. Inspect the actual plugin versions;
-a name in these notes does not prove installation.
-
-After exercise 4's owner-approved merge/publication, refresh the catalogue
-and update the changed sharing-support plugin:
+The fallback update after owner-approved publication is:
 
 ```shell
 copilot plugin marketplace update copilot-marketplace
 copilot plugin update marketplace-maintenance
 ```
 
-Use its install command above for someone who has not installed it yet.
+Use its install command above for someone who has this CLI but not the plugin.
 The source also documents `copilot plugin update matt-pocock-skills` for
 changes to the vendored plugin; a participant skill must not modify that
 vendored collection. Record the observed higher shared-plugin version,

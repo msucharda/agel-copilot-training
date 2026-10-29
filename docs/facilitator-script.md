@@ -145,14 +145,16 @@ Open [the 12-slide deck](../slides/agentic-workshop.html).
 | 10:05-10:10 | 4-6: knowledge layers and packaging | "A skill is a repeatable workflow; a plugin distributes skills; a marketplace lists plugins." |
 | 10:10-10:15 | 7-9: Connector, skill contract and invocation modes, lifecycle | "A Connector supplies information. A model selects eligible skills by description; only the user invokes user-only skills with a slash." |
 | 10:15-10:18 | 10-12: Project worktrees, sharing, day map | "Create your own Project later; first build the assistant." |
-| 10:18-10:30 | Install the AGEL marketplace and vendored Matt Pocock plugin; open a new session and check skills. | "Install the AGEL copy only, not the upstream plugin as well." |
+| 10:18-10:30 | Use the desktop marketplace/plugin UI to install the AGEL marketplace and vendored Matt Pocock plugin; open a new session and check skills. | "The app UI is primary; install the AGEL copy only, not the upstream duplicate." |
 
-Use the single [marketplace values and commands](../README.md#marketplace-values)
+Use the single [marketplace values and installation procedure](../README.md#marketplace-values)
 section. The address, catalogue and plugin names are confirmed there.
-Do not reuse a previous marketplace address. The source documents terminal
-`copilot plugin` commands and desktop **Customize** discovery, not a verified
-desktop `/plugin` command. Resolve the desktop trial before presenting this
-as an observed installation; publication/access remain untested.
+The desktop app's own marketplace/plugin UI is the primary route.
+Exact UI labels and navigation await Friday's trial; do not present guessed
+button names as observed. Do not reuse a previous marketplace address.
+The app's bundled SDK executable is not on the tested agent shell's PATH.
+Use `copilot plugin` only as the README's fallback for an already separately
+installed Copilot CLI; do not require it or switch workshop clients.
 
 Start a new session and inspect its available skills. Confirm the source
 versions and 27-skill vendored collection from the README, including the
@@ -197,7 +199,7 @@ Open [exercise 1](../exercises/01-personal-assistant.md).
 | 10:45-11:00 | Use `assistant-setup`; demonstrate how to answer one setup question. | A reviewed local preference, not invented personal facts. |
 | 11:00-11:15 | Use `assistant-learn` and repeat the same lesson. | No duplicate durable rule. |
 | 11:15-11:40 | Use `assistant-skill`, test the resulting workflow and an unrelated prompt. | A specific trigger and honest handling of missing input. |
-| 11:40-11:55 | Verify `assistant-skill` installed with `gh skill install --from-local . NAME --agent github-copilot --scope user --allow-hidden-dirs --force`. Start a new session outside the clone. | Personal skill availability, not automatic global loading of `AGENTS.md`. |
+| 11:40-11:55 | Check bundled `gh --version` (2.102.1+) in the app session; verify `assistant-skill` installed with `gh skill install --from-local . NAME --agent github-copilot --scope user --allow-hidden-dirs --force`. Start a new session outside the clone. | No separate `gh` install; verify personal skill scope, not automatic global loading of `AGENTS.md`. |
 | 11:55-12:00 | Ask participants to review and save a local commit. | They can explain source clone versus installed copy and how to refresh it. |
 
 At 11:35, ask who has reached the skill test; help participants finish one
@@ -281,7 +283,7 @@ This is the single live participant PR, not a new repository exercise.
 |---|---|---|
 | 16:00-16:10 | Everyone prepares a general-purpose skill; confirm the volunteer's permission, Node/npm and dependency access. | English contribution targets the sharing-support plugin, not the vendored skills. |
 | 16:10-16:25 | Volunteer invokes `assistant-share` and the create/submit handoffs; inspect the preview, both version entries, tests/validation and one real PR. | Marketplace validation and green contribution CI; participant stops before merge. |
-| 16:25-16:35 | Marketplace owner reviews/merges; after publication, others update the shared plugin recorded in the README, open a new session and try the skill. | Another participant can invoke the published version. |
+| 16:25-16:35 | Marketplace owner reviews/merges; after publication, others update the shared plugin using the app UI, open a new session and try the skill. | Another participant can invoke the published version; no assumed `copilot` PATH command. |
 | 16:35-16:40 | Optional read-only Jira example through Atlassian Rovo, only if available. | Identify intent and acceptance criteria; no mandatory dependency. |
 
 The marketplace owner decides whether to merge. Do not present an unmerged
@@ -327,6 +329,11 @@ The two supplied implementation PRs are integrated at their pinned heads.
 Friday's observations and AGEL publication/access remain unverified.
 The template's sharing target is verified against
 the confirmed settings at the source head recorded in the workshop README.
-Recheck the published AGEL copy before live use. The exact Customize controls,
+Reported desktop 1.1.33 Windows evidence confirms bundled `gh` 2.102.1/Git 2.56,
+marketplace management and shared CLI/app `installedPlugins` configuration,
+but not exact UI labels. The SDK CLI executable is not on the agent PATH.
+The app README also requires Linux `unzip` plus `sha256sum` or `shasum`;
+preparation and exercise 2 now state that conditional requirement.
+Recheck the published AGEL copy before live use. The exact UI controls,
 participant installation and update trial remain TODOs in the release ledger.
 These notes are not a Friday checklist.

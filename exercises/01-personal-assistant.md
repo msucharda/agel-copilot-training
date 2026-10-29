@@ -95,7 +95,12 @@ source changes locally; inspect its reported command and result.
 ## 4. Install personally and verify scope (11:40-11:55, 15 minutes)
 
 Confirm the installation performed by `assistant-skill`. The reviewed
-template procedure, run from the assistant repository root, is:
+template procedure uses the app-bundled GitHub CLI. In this app session,
+run `gh --version` and confirm **2.102.1 or higher**, as in preparation.
+Do not install `gh` separately or assume that an unrelated terminal uses the
+app's PATH. Report a missing/older version before continuing.
+
+Run the template procedure from the assistant repository root:
 
 ```shell
 gh skill install --from-local . bug-report-notes --agent github-copilot --scope user --allow-hidden-dirs --force

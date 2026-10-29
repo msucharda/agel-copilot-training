@@ -113,10 +113,13 @@ using `assistant-share`, not a screenshot of a prepared draft.
 Wait for the owner to confirm that the PR is merged and the new plugin
 version is published. Record its actual version in the README's Shared
 plugin version setting. Follow the
-[marketplace update commands](../README.md#marketplace-commands), using that
-single source for the catalogue and plugin names. Participants who do not yet
-have the plugin use the install form documented there after refreshing the
-catalogue. Start a **new session**, inspect its available skills, and invoke the recorded
+[marketplace installation and update procedure](../README.md#marketplace-installation-and-updates),
+using that single source for the catalogue and plugin names. Use the
+**desktop app UI** to refresh the catalogue and update the plugin; exact UI
+labels remain part of Friday's trial. CLI commands are a fallback only for
+someone with a separately installed Copilot CLI, not an assumed app PATH tool.
+Participants without the plugin use the app UI's installation action.
+Start a **new session**, inspect its available skills, and invoke the recorded
 shared skill on the same small example.
 
 **Checkpoint:** someone other than the author can load and use the published

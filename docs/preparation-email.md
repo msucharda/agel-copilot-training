@@ -17,6 +17,9 @@ Before Monday, install the **GitHub Copilot desktop app**, sign in with your
 assistant template. Follow the short checks in the
 [preparation instructions](preparation.md). The published template URL is
 `https://github.com/agel-data-and-ai-temp-poc/copilot-assistant-template.git`.
+In an app chat, check `gh --version` (2.102.1 or higher); use the app's bundled
+tool, not a separate `gh` installation. Linux participants also need `unzip`
+and either `sha256sum` or `shasum`. No standalone Copilot CLI is required.
 
 Microsoft provides Copilot licences through
 `github-agl-aiworkshop-copilot-users`, materials and lecturers. AGEL provides

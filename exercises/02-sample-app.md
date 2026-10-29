@@ -12,6 +12,9 @@ tickets; do not implement it in this block.
 Use **JDK 21** and the Maven wrapper shipped with the app. The integrated
 source uses Spring Boot **4.1.2**. The lecturer must confirm that the AGEL copy
 contains the [reviewed baseline](../README.md#sample-app).
+**Linux only:** the wrapper also needs `unzip` and either `sha256sum` or
+`shasum`; complete the conditional [preparation check](../docs/preparation.md#checks)
+before running it. These utilities are not Windows prerequisites.
 
 | Input | File in the app clone |
 |---|---|
