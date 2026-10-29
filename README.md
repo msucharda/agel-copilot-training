@@ -174,6 +174,9 @@ name, for example `/grill-with-docs <task>`. The maintainer verified this with
 a personal skill from `personal-agents`.
 **Instructor note:** Friday must verify invocation of the plugin-provided
 skills as well; the personal-skill result does not establish that.
+Before clearing this trial, invoke all four setup/planning commands locally
+in the app with task text, inspect their expected local outputs, and record
+the working route in exercise 2. A picker listing alone does not pass this trial.
 If a plugin skill cannot be invoked, use the exercise fallback and mark that
 checkpoint incomplete. Do not switch participants to another client.
 

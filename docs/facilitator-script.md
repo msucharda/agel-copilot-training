@@ -164,6 +164,9 @@ An ordinary request for the model to use it is not equivalent. Each planning
 command in exercise 2 is a separate participant invocation, not an automatic
 model chain. Desktop slash invocation with task text works for the maintainer's
 tested personal skill; Friday must verify the plugin-provided skills.
+Require the README's actual-invocation gate for all four setup/planning commands
+and their expected local outputs before clearing the trial; a picker listing
+alone is insufficient.
 If the catalogue does not contain the expected plugin, stop rather than
 installing another plugin as a substitute or adding upstream
 `mattpocock-skills@mattpocock`.
