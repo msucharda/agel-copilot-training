@@ -131,8 +131,9 @@ skills live in `.agents/skills/`, and personal installation uses `gh skill
 install --from-local`. The published AGEL clone and desktop-app installation
 still need Friday's live verification. The app bundles `gh`; do not add a
 separate CLI prerequisite to the preparation message.
-Its sharing instructions must also match the confirmed marketplace
-destination; do not follow a stale hard-coded target from a template version.
+At template head `d873f8747d7c1cdf1b4b1e9fb254c038f471cc93`, both its README
+and `assistant-share` use the confirmed marketplace destination above.
+Recheck the published template version before the live exercise.
 
 ## Publication
 

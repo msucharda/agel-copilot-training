@@ -307,8 +307,8 @@ The template instructions are aligned with
 `.agents/skills/` source, local commits, preview `gh skill install`,
 `AGENTS.md` scope and the two marketplace-maintenance handoff skills.
 The published app PR, new marketplace implementation and Friday's observations
-still need integration. The coordinator has confirmed the new settings in
-the README for both installation and exercise 4; align the template's
-sharing target before live use. The app `/plugin` route is documented by the
+still need integration. The template's sharing target is verified against
+the confirmed settings at the source head recorded in the workshop README.
+Recheck the published AGEL copy before live use. The app `/plugin` route is documented by the
 legacy reference, but the new marketplace and AGEL desktop-app test remain
 unverified. These notes are not a Friday checklist.
