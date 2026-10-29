@@ -151,8 +151,11 @@ PATH to make these commands work. App and CLI share `installedPlugins` in
 do not edit that configuration by hand.
 
 Do not treat the interactive CLI's `/plugin` or `/skills` as verified
-desktop-app commands. For lecturer-only CLI skill checks,
-use interactive mode, not non-interactive `-p` invocation.
+desktop-app commands. This fallback is for **plugin management only**, not
+skill invocation. CLI 1.0.105 fails user-only skill invocation in
+both interactive TUI and non-interactive `-p` mode, even when its skill list
+shows the skill enabled. Use the Matt Pocock workshop skills **only in the
+desktop app**; do not treat CLI as a fallback for setup or planning.
 
 ```shell
 copilot plugin marketplace add agel-data-and-ai-temp-poc/copilot-marketplace

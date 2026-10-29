@@ -7,6 +7,11 @@ sample app in the Copilot desktop app.
 specification and tickets for a larger feature. Stop the larger feature at
 tickets; do not implement it in this block.
 
+**App only:** invoke the Matt Pocock skills in the desktop app. CLI 1.0.105
+cannot invoke the user-only skills in either interactive TUI or non-interactive
+mode, even if they appear enabled. The optional CLI plugin-management
+procedure is not a fallback for this exercise.
+
 ## Before you start
 
 Use **JDK 21** and the Maven wrapper shipped with the app. The integrated

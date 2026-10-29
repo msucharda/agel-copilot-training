@@ -155,6 +155,9 @@ button names as observed. Do not reuse a previous marketplace address.
 The app's bundled SDK executable is not on the tested agent shell's PATH.
 Use `copilot plugin` only as the README's fallback for an already separately
 installed Copilot CLI; do not require it or switch workshop clients.
+That fallback manages plugins only. CLI 1.0.105 cannot invoke the user-only
+skills in interactive TUI or non-interactive mode, even when they are listed
+as enabled. The Matt Pocock skill exercises run only in the desktop app.
 
 Start a new session and inspect its available skills. Confirm the source
 versions and 27-skill vendored collection from the README, including the
@@ -166,6 +169,8 @@ An ordinary request for the model to use it is not equivalent. Each planning
 command in exercise 2 is a separate participant invocation, not an automatic
 model chain. Desktop slash invocation with task text works for the maintainer's
 tested personal skill; Friday must verify the plugin-provided skills.
+The maintainer also reports 24 native setup invocations from the personal
+source; this is not evidence that the plugin-backed route has passed.
 Require the README's actual-invocation gate for all four setup/planning commands
 and their expected local outputs before clearing the trial; a picker listing
 alone is insufficient.
