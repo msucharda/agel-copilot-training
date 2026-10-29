@@ -182,6 +182,7 @@
       .presenter .diagram { height: calc(var(--u) * 22); max-height: none; margin-block: calc(var(--u) * .5); }
       .presenter footer { padding: .3rem; font-size: .7rem; }
       :fullscreen .masthead, :fullscreen footer { display: none; }
+      :fullscreen body.presenter { grid-template-rows: auto minmax(0, 1fr); }
     }
     @media (max-width: 42rem) {
       .masthead, .controls, main { width: calc(100% - 1.5rem); }
