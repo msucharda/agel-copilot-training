@@ -37,7 +37,10 @@ The JDK check above uses PowerShell command separators. On another shell,
 run `java -version` and `javac -version` as separate commands. Report a
 different major version instead of assuming that it is sufficient.
 The Maven Central browser check verifies reachability, not a successful app
-build; the sample app build is checked in exercise 2.
+build; the sample app build is checked in exercise 2. That app uses Java 21
+and its bundled Maven wrapper; do not install Maven or a database server
+separately. The [sample-app instructions](../exercises/02-sample-app.md)
+contain the actual AGEL clone and Windows/Unix wrapper commands.
 
 ### Test clone
 
@@ -70,6 +73,16 @@ the workshop marketplace. Its address and plugin names live only in the
 [marketplace values](../README.md#marketplace-values). The destination is
 confirmed; participant access remains to be verified. One volunteer performs
 the single live PR there.
+
+Only the designated contribution volunteer needs **Node.js 22+ and npm**
+for the marketplace's validation commands. The maintainer confirms that
+participant and their tools before the live exercise. This is not an
+additional installation requirement for everyone. If you volunteer, check
+`node --version; npm --version` in PowerShell and report missing tools;
+do not assume permission to install software. The marketplace's `npm ci`
+also needs its npm dependency download or an approved cache; confirm that
+route with the maintainer/AGEL IT. GitHub and Maven reachability alone do not
+establish it. Other participants only install/update the published plugin.
 
 ## Optional Jira
 

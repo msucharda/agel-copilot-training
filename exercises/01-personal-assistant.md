@@ -16,8 +16,8 @@ contains one reusable skill, and has a verified personal installation.
 - Add the existing local assistant directory as a repository in the app and
   start a session there. This is not yet the Project exercise.
 - Read the clone's README. Confirm that `assistant-setup`, `assistant-learn`
-  and `assistant-skill` are available in that session. Use `/skills` to inspect
-  available skills; if a skill is missing, ask the lecturer before continuing.
+  and `assistant-skill` are available in that session. Inspect its available
+  skills; if one is missing, ask the lecturer before continuing.
 
 The four maintenance skills come from `.agents/skills/` in this clone.
 `assistant-setup` fills `AGENTS.md` and creates a local commit after approval;
@@ -143,7 +143,7 @@ Show the lecturer:
 | Problem | Continue with | What is not complete |
 |---|---|---|
 | Template download or app access fails | Follow the lecturer's walkthrough and draft your preference and skill in a local text file | Assistant setup and installed-skill verification |
-| A required skill is missing | Compare the actual README and `/skills` output with the lecturer; inspect its source if available | Do not pretend that an ordinary prompt invoked that skill |
+| A required skill is missing | Compare the actual README and the session's available skills with the lecturer; inspect its source if available | Do not pretend that an ordinary prompt invoked that skill |
 | Personal installation fails | Preserve the local source and demonstrate the repository-local skill | Personal installation remains pending; local availability is not proof of personal scope |
 
 Jira and the Connector are not needed. Keep useful local work if a dependency

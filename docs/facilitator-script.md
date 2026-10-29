@@ -13,8 +13,12 @@ to produce the most code.
 
 - This is a draft. Resolve the [integration values](../README.md#release-status-and-unresolved-integration-values)
   before presenting the dependent steps. Never type a `TODO` command live.
-- The Java app and its six `.scratch/` tasks are being developed separately.
-  Their exact commands and filenames must come from the reviewed app README.
+- The [pinned Java app and marketplace sources](../README.md#sample-app) are
+  integrated for v0. Confirm the AGEL copies contain them; source review is
+  not a participant installation result.
+- Pre-arrange one contribution volunteer with branch/PR permission, Node.js
+  22+, npm and an approved dependency-download/cache route. These extra
+  contribution tools are not required from everyone.
 - Use the GitHub Copilot desktop app, including its session terminal when
   needed. Do not silently substitute VS Code, browser chat or standalone CLI.
 - Share the app window in Teams, enlarge text, read task prompts aloud and
@@ -145,13 +149,15 @@ Open [the 12-slide deck](../slides/agentic-workshop.html).
 
 Use the single [marketplace values and commands](../README.md#marketplace-values)
 section. The address, catalogue and plugin names are confirmed there.
-Do not reuse a previous marketplace address or execute command shapes before
-substituting the settings. Check the new marketplace's README and verify the
-app installation route before the workshop; publication/access remain untested.
+Do not reuse a previous marketplace address. The source documents terminal
+`copilot plugin` commands and desktop **Customize** discovery, not a verified
+desktop `/plugin` command. Resolve the desktop trial before presenting this
+as an observed installation; publication/access remain untested.
 
-Start a new session and inspect `/skills`. Confirm the actual vendored skills,
-including the ones required by the app exercise, plus `marketplace-create-skill`
-and `marketplace-submit-update` for sharing. Record the plugin versions.
+Start a new session and inspect its available skills. Confirm the source
+versions and 27-skill vendored collection from the README, including the
+named setup/planning, diagnosis/TDD/review and contribution skills.
+Record the actual installed versions; do not assume the CLI menus are app controls.
 If the catalogue does not contain the expected plugin, stop rather than
 installing another plugin as a substitute or adding upstream
 `mattpocock-skills@mattpocock`.
@@ -206,10 +212,10 @@ use the reviewed Java app's README. Do not improvise its build command.
 
 | Time | Facilitation cue | Checkpoint |
 |---|---|---|
-| 13:00-13:15 | Clone `TODO_SAMPLE_APP_URL`; run `TODO_APP_VERIFY_COMMAND` and `TODO_APP_RUN_COMMAND`. | Observed baseline and JDK 21. |
-| 13:15-13:25 | Run `setup-matt-pocock-skills`; inspect its changes and the available installed skills. | Repository setup versus plugin installation are distinct. |
-| 13:25-14:00 | Work on `.scratch/TODO_BUG_TASK`: reproduce, test, fix, verify, review diff. | Original symptom reproduced and gone after the fix. |
-| 14:00-14:25 | Clarify `.scratch/TODO_FEATURE_TASK`, write a spec and local tickets with dependencies. | Stop at tickets: no feature implementation or tracker writes. |
+| 13:00-13:15 | Clone the AGEL app linked in exercise 2; run `.\mvnw.cmd verify`, then `.\mvnw.cmd spring-boot:run` (Unix: `./mvnw`). Inspect health/Swagger with the documented local accounts. | Observed Java 21 baseline; stop/restart the manual server when code changes. |
+| 13:15-13:25 | Run `setup-matt-pocock-skills`; choose local Markdown tracking and inspect `docs/agents/issue-tracker.md` and `docs/agents/domain.md`. | Repository setup versus plugin installation; no remote tracker writes. |
+| 13:25-14:00 | Use `diagnosing-bugs` and `tdd` on `.scratch/back-to-back-bookings/issues/01-fix-boundary-conflict.md`; reproduce 409 instead of 201, fix and verify. | Correct regression, not an auth/CSRF failure; true overlaps still conflict. |
+| 14:00-14:25 | Read `.scratch/recurring-bookings/idea.md`; use `grill-with-docs`, `to-spec`, then `to-tickets` after spec review. | Local `spec.md` and separate issue files; no implementation or remote tracker writes. |
 | 14:25-14:30 | Inspect one bug result and one ticket's acceptance criteria. | Participants can describe the evidence and the remaining work. |
 
 **Fallback:** if Java/Maven or network fails, use the lecturer's observed
@@ -238,9 +244,9 @@ schedule unchanged.
 | Time | Facilitation cue | Checkpoint |
 |---|---|---|
 | 14:45-14:55 | Preserve exercise 2 work, add the existing local app clone, create a Project based on local `main`. | No remote repository creation. |
-| 14:55-15:05 | Have the Project start two sessions for `TODO_PROJECT_TASK_A/B`; add `TODO_PROJECT_TASK_C` only if useful. | Each session has a bounded `.scratch/` task and its own worktree. |
+| 14:55-15:05 | Have the Project start equipment-filter and CSV-export sessions on the exact task paths in exercise 3; optionally add facility documentation. | Independent room/export/docs scopes, each with its own worktree and captured review base. |
 | 15:05-15:35 | Read questions and diffs; require `code-review` and a disposition for every finding in each session. | Local skill review, not GitHub Copilot PR review. |
-| 15:35-15:55 | Merge ready results one at a time into local `main`; rerun the documented app checks on the combination. | No PR, push or GitHub review. |
+| 15:35-15:55 | Merge ready results into local `main`; run `.\mvnw.cmd verify` (Unix: `./mvnw verify`) on the combination. Keep only one manual app server on 8080. | No PR, push or GitHub review; separate databases do not prevent port conflicts. |
 | 15:55-16:00 | Ask each participant to identify one human coordination decision. | A Project with 2-3 reviewed sessions and a verified local result. |
 
 At 15:25, discourage starting more work. At 15:35, freeze new assignments
@@ -260,8 +266,8 @@ This is the single live participant PR, not a new repository exercise.
 
 | Time | Facilitation cue | Checkpoint |
 |---|---|---|
-| 16:00-16:10 | Everyone prepares a general-purpose skill; designate one volunteer with marketplace branch/PR permission. | Reviewed English content and an identified target plugin. |
-| 16:10-16:25 | Volunteer invokes `assistant-share`, inspects the preview, confirms publication and creates one real PR. | Actual marketplace URL, validation and version/catalog changes. |
+| 16:00-16:10 | Everyone prepares a general-purpose skill; confirm the volunteer's permission, Node/npm and dependency access. | English contribution targets the sharing-support plugin, not the vendored skills. |
+| 16:10-16:25 | Volunteer invokes `assistant-share` and the create/submit handoffs; inspect the preview, both version entries, tests/validation and one real PR. | Marketplace validation and green contribution CI; participant stops before merge. |
 | 16:25-16:35 | Marketplace owner reviews/merges; after publication, others update the shared plugin recorded in the README, open a new session and try the skill. | Another participant can invoke the published version. |
 | 16:35-16:40 | Optional read-only Jira example through Atlassian Rovo, only if available. | Identify intent and acceptance criteria; no mandatory dependency. |
 
@@ -290,25 +296,24 @@ individual checkpoints for follow-up rather than extending the workshop.
 
 ## Source alignment notes
 
-Verified against the maintainer's read-only local references:
+Maintainer evidence, not participant clone targets or claims of live success:
 
 - DevSecOps `AGENTS.md`, `CONTEXT.md`, `docs/agents/domain.md` and
   `docs/agents/issue-tracker.md`: domain vocabulary/ADRs before exploration,
   GitHub issues and explicit tracker conventions.
-- Legacy marketplace reference `README.md`,
-  `plugins/marketplace-maintenance/skills/marketplace-install/SKILL.md` and
-  `.github/plugin/marketplace.json`: app `/plugin` install/update, new-session
-  availability and versioned plugin publication. This is prior reference
-  evidence, not the confirmed workshop marketplace's address or an installation
-  target.
+- The source pins recorded in the workshop README: app commands and all six
+  `.scratch/` briefs; marketplace catalogue/manifests, install/create/submit
+  skills and local issue-tracker/planning interfaces. CLI `/plugin` is not
+  evidence of the desktop route.
 
 The template instructions are aligned with
 [msucharda/copilot-assistant-template#2](https://github.com/msucharda/copilot-assistant-template/pull/2):
 `.agents/skills/` source, local commits, preview `gh skill install`,
 `AGENTS.md` scope and the two marketplace-maintenance handoff skills.
-The published app PR, new marketplace implementation and Friday's observations
-still need integration. The template's sharing target is verified against
+The two supplied implementation PRs are integrated at their pinned heads.
+Friday's observations and AGEL publication/access remain unverified.
+The template's sharing target is verified against
 the confirmed settings at the source head recorded in the workshop README.
-Recheck the published AGEL copy before live use. The app `/plugin` route is documented by the
-legacy reference, but the new marketplace and AGEL desktop-app test remain
-unverified. These notes are not a Friday checklist.
+Recheck the published AGEL copy before live use. The exact Customize controls,
+participant installation and update trial remain TODOs in the release ledger.
+These notes are not a Friday checklist.

@@ -61,18 +61,36 @@ inside the available viewport.
 
 **Draft for review, not the final preparation message.** Do not send the email
 or run a command containing `TODO` or an unresolved `<placeholder>`.
-The maintainer replaces the following
-values after checking the sibling repositories and Friday's test results.
-Development repositories below are references, not participant clone targets.
+The source inputs below are integrated for v0; publication and participant
+results are not yet observed. The maintainer resolves the remaining values
+after Friday's test. Do not substitute development copies for AGEL targets.
 
 | Marker | Required value / evidence | Owner |
 |---|---|---|
-| `TODO_SAMPLE_APP_URL` | Published workshop Java app clone URL; source: [sample app](https://github.com/msucharda/copilot-workshop-room-booking) | Coordinator |
-| `TODO_APP_VERIFY_COMMAND` | JDK 21 build/test command from the sample app README | Sample app session |
-| `TODO_APP_RUN_COMMAND` | Local run command and expected result from the sample app README | Sample app session |
-| `TODO_BUG_TASK` | Existing `.scratch/` bug task filename and baseline symptom | Sample app session |
-| `TODO_FEATURE_TASK` | Existing `.scratch/` larger-feature brief, ending at tickets | Sample app session |
-| `TODO_PROJECT_TASK_A`, `TODO_PROJECT_TASK_B`, `TODO_PROJECT_TASK_C` | Two required and one optional existing `.scratch/` tasks with compatible acceptance criteria | Sample app session |
+| `TODO_FRIDAY_RESULTS` | Results of Friday's rehearsal and resulting preparation changes | Coordinator |
+| `TODO_PARTICIPANT_OS` | Participant operating systems and the observed wrapper/install procedures | Coordinator |
+| `TODO_AGEL_ACCESS` | Published AGEL copies and participant account access | Coordinator |
+| `TODO_DESKTOP_PLUGIN_TRIAL` | Actual desktop Customize controls, install/update route and fresh-session skill discovery | Lecturers |
+| `TODO_VOLUNTEER` | One participant with marketplace branch/PR permission, Node.js 22+ and npm | Maintainer |
+| `TODO_NPM_ACCESS` | That volunteer can complete `npm ci` using an approved npm registry route or cache | Volunteer / AGEL IT |
+
+## Sample app
+
+Participant repository:
+[agel-data-and-ai-temp-poc/copilot-workshop-room-booking](https://github.com/agel-data-and-ai-temp-poc/copilot-workshop-room-booking).
+The integrated source is pinned at
+`316a0f6a2725c43bd70c6c7b721b1f5f7fb37e7b`, not yet evidence of an AGEL release.
+It uses **Java 21 and Spring Boot 4.1.2**, Spring Data JPA, Flyway and local H2,
+with a REST API, Swagger UI and HTTP Basic roles `EMPLOYEE`/`FACILITY_ADMIN`.
+No Docker, database server or separate Maven installation is needed.
+
+[Exercise 2](exercises/02-sample-app.md) contains the clone, wrapper build/run
+commands, local-account cautions and the back-to-back bookings bug. Its larger
+feature starts from `.scratch/recurring-bookings/idea.md` and stops at local
+specification/ticket files. [Exercise 3](exercises/03-copilot-project.md) uses
+the equipment-filter and CSV-export tasks, with facility documentation as an
+optional third session. The availability-selection refactoring remains an
+alternative supplied task, not a simultaneous second fix for the booking bug.
 
 ## Marketplace values
 
@@ -86,40 +104,56 @@ access or a successful install; those live checks remain open.
 |---|---|---|
 | Marketplace repository (`owner/repo`) | [agel-data-and-ai-temp-poc/copilot-marketplace](https://github.com/agel-data-and-ai-temp-poc/copilot-marketplace) | Confirm participant access and permission to create a branch and PR here |
 | Installed catalogue name | `copilot-marketplace` | Confirmed by the coordinator; verify the installed catalogue |
-| Matt Pocock plugin | `matt-pocock-skills` | Contains all his vendored skills; verify publication and installation |
-| Sharing support plugin | `marketplace-maintenance` | Provides `marketplace-create-skill` and `marketplace-submit-update`; verify they target this marketplace |
-| Shared plugin and version | `TODO_SHARED_PLUGIN` | Name/version published after the exercise-4 PR is reviewed and merged |
+| Matt Pocock plugin | `matt-pocock-skills` | Source version **0.1.0**, 27 vendored skills |
+| Sharing support plugin | `marketplace-maintenance` | Source version **0.3.0**; also the target for participant-authored contributions |
+| Shared plugin version | `TODO_SHARED_VERSION` | Actual higher version of the sharing-support plugin after owner-approved merge/publication |
 | Shared skill | `TODO_SHARED_SKILL` | Published name distinct from participants' personal example names |
 
 Other materials refer to these settings rather than repeating their values.
 Do not install an unrelated existing plugin as a substitute, or install the
 upstream `mattpocock-skills@mattpocock` plugin alongside the vendored copy.
+Marketplace source is pinned at `b7510db7dd83577844239674d5c4fbab31500b5d`.
 
 ### Marketplace commands
 
-In a Copilot app session, replace each bracketed field with its setting above.
-These are command shapes, **not executable commands until substituted**.
-The coordinator supplied the matching `copilot plugin ...` terminal commands;
-the forms below use the app session's `/plugin` entry point. Verify the app
-route against the new marketplace's README and Friday's test.
+In the **desktop app**, inspect **Customize** for marketplace/plugin controls.
+Their exact route and behavior remain part of the desktop-plugin trial above; a terminal
+command being documented is not evidence that the desktop controls work.
+Do not treat the interactive CLI's `/plugin` or `/skills` as verified
+desktop-app commands, or switch participants to another client.
 
-```text
-/plugin marketplace add <marketplace-repository>
-/plugin marketplace browse <catalogue-name>
-/plugin install <matt-pocock-plugin>@<catalogue-name>
-/plugin install <sharing-support-plugin>@<catalogue-name>
+These are the new marketplace's documented **terminal** commands, for the
+lecturer to verify through the app's session terminal before live use.
+They do not add a standalone CLI installation to participant preparation.
+If the tool is unavailable there, report the installation checkpoint blocked.
+
+```shell
+copilot plugin marketplace add agel-data-and-ai-temp-poc/copilot-marketplace
+copilot plugin marketplace browse copilot-marketplace
+copilot plugin install marketplace-maintenance@copilot-marketplace
+copilot plugin install matt-pocock-skills@copilot-marketplace
+copilot plugin list
 ```
 
-After exercise 4's owner-approved merge and publication:
+Start a fresh desktop session. Inspect its available skills and confirm
+`marketplace-install`, `marketplace-create-skill`, `marketplace-submit-update`,
+`setup-matt-pocock-skills`, `grill-with-docs`, `to-spec`, `to-tickets`,
+`diagnosing-bugs`, `tdd` and `code-review`. Inspect the actual plugin versions;
+a name in these notes does not prove installation.
 
-```text
-/plugin marketplace update <catalogue-name>
-/plugin update <shared-plugin>
+After exercise 4's owner-approved merge/publication, refresh the catalogue
+and update the changed sharing-support plugin:
+
+```shell
+copilot plugin marketplace update copilot-marketplace
+copilot plugin update marketplace-maintenance
 ```
 
-For someone who has not installed the shared plugin yet, use
-`/plugin install <shared-plugin>@<catalogue-name>` after refreshing the
-catalogue. Start a new session and check `/skills`.
+Use its install command above for someone who has not installed it yet.
+The source also documents `copilot plugin update matt-pocock-skills` for
+changes to the vendored plugin; a participant skill must not modify that
+vendored collection. Record the observed higher shared-plugin version,
+start a fresh session and invoke the recorded shared skill.
 
 ## Template alignment
 

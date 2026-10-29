@@ -9,18 +9,23 @@ Copilot review or push these changes.
 
 ## Task selection
 
-The lecturer supplies these actual files from the app's six `.scratch/`
-tasks. `TODO` values must be resolved before starting implementation.
+Use these existing files in the app clone. The lecturer checks the
+[integrated baseline](../README.md#sample-app) before starting.
 
 | Session | Task | Use |
 |---|---|---|
-| A | `.scratch/TODO_PROJECT_TASK_A` | Required |
-| B | `.scratch/TODO_PROJECT_TASK_B` | Required |
-| C | `.scratch/TODO_PROJECT_TASK_C` | Optional third session if time and dependencies allow |
+| A | `.scratch/room-equipment-filter/issues/01-filter-room-equipment.md` | Required: all-of equipment filter on the room catalogue |
+| B | `.scratch/booking-csv-export/issues/01-export-own-bookings.md` | Required: private paginated CSV export |
+| C | `.scratch/facility-api-guide/issues/01-document-facility-operations.md` | Optional: facility operations guide |
 
 Read each task's acceptance criteria. Choose two independent tasks; use a
 third only if it can finish and be reviewed within this block. Do not start
 several sessions on the same file without an explicit coordination decision.
+These task scopes separate `room/`, new `booking/export/` files and
+`docs/api-usage.md`, with distinct tests. Do not edit shared helpers or the
+shared README from those sessions.
+`.scratch/availability-selection/issues/01-clarify-selection-pipeline.md`
+is an alternative refactoring task, not another boundary-bug implementation.
 
 ## 1. Prepare the local base (14:45-14:55, 10 minutes)
 
@@ -28,6 +33,8 @@ Inspect the app clone with your normal Git tools. Commit the work you want to
 keep from exercise 2, ensure the working tree is clean, and select local
 `main` as the Project base. If the clone is not on `main`, ask the lecturer to
 help preserve the current work before switching branches.
+Keep the local Markdown tracker configuration from exercise 2, including
+`docs/agents/issue-tracker.md` and `docs/agents/domain.md`.
 
 Add the **existing local sample-app clone** as a repository in the Copilot
 desktop app if it is not already registered. Create your own Copilot Project
@@ -37,20 +44,27 @@ Do not choose a remote repository creation or publishing flow.
 
 ## 2. Give the Project a bounded assignment (14:55-15:05, 10 minutes)
 
-Use the actual task filenames:
+Use the selected task filenames directly:
 
 ```text
 This is my individual local workshop Project for the sample app.
 Read its README and the selected .scratch tasks before acting.
-Create two coding sessions for TASK_A and TASK_B, with an optional third
-for TASK_C only if the tasks are independent and time permits.
+Our tracker is local Markdown: no GitHub/Jira issue writes.
+Create two coding sessions for:
+A: .scratch/room-equipment-filter/issues/01-filter-room-equipment.md
+B: .scratch/booking-csv-export/issues/01-export-own-bookings.md
+Optionally create C for
+.scratch/facility-api-guide/issues/01-document-facility-operations.md
+only if independent and time permits.
 Each session must use its own worktree, implement only its assigned task,
-verify the task's acceptance criteria, run code-review, resolve its findings,
-and report its branch and commit. Do not create PRs, request GitHub Copilot
+capture its base commit before editing, verify acceptance criteria, run
+code-review against that base and the local task file, resolve findings,
+and report its branch and commit. Stay within each task's file scope.
+Run the app's targeted tests and wrapper verify. Do not run competing
+manual app servers on port 8080. Do not create PRs, request GitHub Copilot
 review, push, or merge until I inspect the results.
 ```
 
-Replace `TASK_A`, `TASK_B` and optional `TASK_C` with the selected paths.
 Ask the Project to name each session's scope and dependency before it starts.
 
 **Checkpoint:** two sessions exist, each has a different worktree/branch,
@@ -68,6 +82,12 @@ For each completed session, inspect:
 - Evidence for its acceptance criteria and relevant tests.
 - Its `code-review` result and the disposition of every finding.
 - The exact local branch and commit offered for integration.
+
+For A, check all-of matching, omitted/duplicate/unknown equipment and
+combination with existing filters. For B, check owner isolation, pagination,
+CSV quoting and spreadsheet-formula neutralization. For C, check the
+documented PowerShell/CSRF workflow and its expected 403/400 examples.
+Use the complete task criteria, not just these reminders.
 
 If the session skipped the review, ask it to run `code-review` before
 integration. This is a local skill review, not GitHub Copilot PR review.
@@ -92,9 +112,17 @@ If a merge reports a conflict, stop integration, inspect both task intents,
 resolve the actual conflict and rerun the affected checks before continuing.
 Do not discard another session's changes to obtain a clean merge.
 
-Run `TODO_APP_VERIFY_COMMAND` from the real sample app README on the combined
-local `main`. Inspect both tasks' observable results. Passing checks inside
+Run the full check from the app root on combined local `main`:
+
+```powershell
+.\mvnw.cmd verify
+```
+
+On Unix, use `./mvnw verify`. Inspect both tasks' observable results. Passing checks inside
 separate worktrees do not prove that the combination works.
+Tests use in-memory H2; manual app instances use per-worktree database files
+but share the default port. Stop any previous manual server before running
+one instance to inspect the combined result. Do not delete another worktree's data.
 
 ## 5. Explain the result (15:55-16:00, 5 minutes)
 

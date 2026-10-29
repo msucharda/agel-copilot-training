@@ -9,34 +9,61 @@ tickets; do not implement it in this block.
 
 ## Before you start
 
-Use JDK 21. Obtain the actual values below from the sample app README and the
-lecturer; do not run the placeholders or invent task files.
+Use **JDK 21** and the Maven wrapper shipped with the app. The integrated
+source uses Spring Boot **4.1.2**. The lecturer must confirm that the AGEL copy
+contains the [reviewed baseline](../README.md#sample-app).
 
-| Value | Integration status |
+| Input | File in the app clone |
 |---|---|
-| Published clone URL | `TODO_SAMPLE_APP_URL` |
-| Build and test command | `TODO_APP_VERIFY_COMMAND` |
-| Local run command and observable result | `TODO_APP_RUN_COMMAND` |
-| Bug brief in `.scratch/` | `TODO_BUG_TASK` |
-| Larger-feature brief in `.scratch/` | `TODO_FEATURE_TASK` |
+| Bug | `.scratch/back-to-back-bookings/issues/01-fix-boundary-conflict.md` |
+| Larger feature | `.scratch/recurring-bookings/idea.md` |
 
 The AGEL vendored Matt Pocock plugin must be installed from the morning
 theory block. Do not also install the upstream `mattpocock-skills@mattpocock` plugin.
 
 ## 1. Establish the baseline (13:00-13:15, 15 minutes)
 
-If you do not already have the sample clone, use the published URL:
+If you do not already have the sample clone, use the AGEL copy:
 
 ```shell
-git clone TODO_SAMPLE_APP_URL agel-room-booking
+git clone https://github.com/agel-data-and-ai-temp-poc/copilot-workshop-room-booking.git agel-room-booking
 cd agel-room-booking
 git status --short
 ```
 
 Add this existing local directory as a repository in the Copilot app and
-start a session. Read the app README. Run its verified build/test command,
-`TODO_APP_VERIFY_COMMAND`, and its local run command,
-`TODO_APP_RUN_COMMAND`. Record what succeeded or failed before making changes.
+start a session. Read the app README, including its local accounts and CSRF
+procedure. Run the wrapper from the app root:
+
+| Action | Windows PowerShell | Unix shell |
+|---|---|---|
+| Verify baseline and formatting | `.\mvnw.cmd verify` | `./mvnw verify` |
+| Run locally | `.\mvnw.cmd spring-boot:run` | `./mvnw spring-boot:run` |
+
+If Java 21 is not selected, use your actual JDK installation path for
+`JAVA_HOME` and put its `bin` first on `PATH`, as the app README describes.
+Do not copy another machine's JDK path.
+
+The app binds to `127.0.0.1:8080`. Open
+<http://localhost:8080/actuator/health> and
+<http://localhost:8080/swagger-ui.html>. All `/api/**` routes require HTTP Basic:
+
+| Local development account | Public local-only password | Role |
+|---|---|---|
+| `alice` | `alice-local-only` | `EMPLOYEE` |
+| `bob` | `bob-local-only` | `EMPLOYEE` |
+| `facilities` | `facilities-local-only` | `FACILITY_ADMIN`, `EMPLOYEE` |
+
+These are intentional development examples, not company credentials.
+Do not expose the service or enter real company data. Writes need the token
+from `GET /api/csrf`, its session cookie and the returned token header;
+follow the app README rather than disabling CSRF to make a request work.
+
+Data persists in `.data/room-booking.mv.db`; tests use in-memory H2.
+Do not delete the database as a routine reset. Stop the manual server with
+`Ctrl+C` before changing/rebuilding it, then restart to observe the new code.
+Record baseline results before making changes. An initially green `verify`
+does not prove that the intentional boundary bug is absent.
 Do not create a GitHub repository, fork, PR or remote branch.
 
 ## 2. Set up the coding workflow (13:15-13:25, 10 minutes)
@@ -46,12 +73,21 @@ Ask in the sample-app session:
 ```text
 Use setup-matt-pocock-skills for this repository. Read its current
 instructions and README first. Explain the proposed changes, then configure
-the repository to use the AGEL vendored Matt Pocock skills. Do not install
-the upstream plugin, publish a repository or start unrelated work.
+the repository to use the AGEL vendored Matt Pocock skills.
+Choose LOCAL MARKDOWN as the issue tracker, not GitHub or Jira even though
+origin points at GitHub. Configure docs/agents/issue-tracker.md and
+docs/agents/domain.md. Specs belong in .scratch/<feature>/spec.md and each
+ticket in .scratch/<feature>/issues/<NN>-<slug>.md.
+When a skill says "publish to the issue tracker", it means these local files.
+Do not install the upstream plugin, create remote issues, publish a
+repository or start unrelated work.
 ```
 
 Inspect the diff and verify the resulting instructions in a new session.
-Use `/skills` to confirm that the relevant workflow skills are available.
+Inspect the session's available skills: `diagnosing-bugs`, `tdd`,
+`grill-with-docs`, `to-spec`, `to-tickets` and `code-review`. The local-tracker
+template is supported by the installed setup skill; do not use its GitHub
+tracker template for this exercise.
 
 **Checkpoint:** identify what changed in the repository and what comes from
 the installed plugin. A skill name in a document is not proof that the skill
@@ -59,15 +95,19 @@ is installed.
 
 ## 3. Reproduce and fix one bug (13:25-14:00, 35 minutes)
 
-Open `.scratch/TODO_BUG_TASK` only after the actual filename has been supplied.
+Open `.scratch/back-to-back-bookings/issues/01-fix-boundary-conflict.md`.
+Its symptom is **HTTP 409 instead of 201** when a booking starts exactly
+when another ends. Follow its reproduction, including authentication and CSRF.
 Ask:
 
 ```text
-Read the selected .scratch bug brief. First reproduce its exact symptom and
-record the expected versus actual behaviour. Use the installed diagnosis and
-test-first workflow skills where applicable. Make the smallest complete fix,
-run the relevant tests and show evidence that the original symptom is gone.
-Stay local; do not open a PR or push.
+Read .scratch/back-to-back-bookings/issues/01-fix-boundary-conflict.md.
+Use diagnosing-bugs and tdd. Reproduce the exact boundary-conflict symptom
+through the public API, then add a failing regression before fixing it.
+Preserve real-overlap conflicts, cancelled-booking behavior, ownership and
+room locking. Make availability and creation agree. Run the task's targeted
+tests and full verify, then show the reproduction and passing evidence.
+Stay local; do not create tracker issues, open a PR or push.
 ```
 
 Read the reproduction before accepting a fix. A test that was already green
@@ -77,23 +117,42 @@ local commit using your normal Git workflow.
 **Checkpoint:** show the reproduction, the changed behaviour and the relevant
 passing check. If the baseline failed for an environment reason, keep that
 separate from the bug result.
+The red result must expose the expected 201 versus actual 409, not merely
+a missing test class, authentication failure or malformed request.
+
+After adding the regression, the task's PowerShell checks are:
+
+```powershell
+.\mvnw.cmd '-Dtest=BookingBoundaryIntegrationTest,BookingApiIntegrationTest,AvailabilityApiIntegrationTest' test
+.\mvnw.cmd verify
+```
+
+On Unix, replace `.\mvnw.cmd` with `./mvnw`. Restart the manual server if
+you also check the changed behavior interactively.
 
 ## 4. Shape a larger feature, stopping at tickets (14:00-14:25, 25 minutes)
 
-Read `.scratch/TODO_FEATURE_TASK`, using its actual filename. Ask:
+Read `.scratch/recurring-bookings/idea.md`. It is only an idea: weekly
+meetings, changes/cancellation and visible conflicts. A specification and
+tickets do not exist yet. Ask:
 
 ```text
-Use the installed planning skills to clarify the selected larger-feature
-brief. Ask about ambiguous behaviour, write a bounded specification with
-observable acceptance criteria, then split it into independently verifiable
-local tickets with explicit dependencies. Keep all output local. Do not
-create tracker issues, implement the feature, start sessions or push.
+Read .scratch/recurring-bookings/idea.md and our local issue-tracker docs.
+Use grill-with-docs to clarify recurrence, timezone/DST, limits, conflicts,
+edits/cancellation and ownership without inventing decisions.
+Use to-spec to write .scratch/recurring-bookings/spec.md with bounded,
+observable acceptance criteria. After I review it, use to-tickets to write
+one file per ticket in .scratch/recurring-bookings/issues/<NN>-<slug>.md,
+with explicit dependencies and completion checks.
+"Publish" means local Markdown here. Do not create remote tracker issues,
+implement the feature, start sessions or push.
 ```
 
 Review at least one ambiguous case and one dependency. If the agent proposes
 more work than you can review in five minutes, reduce the scope.
-Keep the tickets in the local location chosen by the app's documented
-workflow; do not create GitHub or Jira tickets for this exercise.
+Inspect both the local spec and separate ticket files; a combined prose list
+alone is not the documented `to-tickets` output. Do not create GitHub or Jira
+tickets for this exercise.
 
 ## 5. Inspect the handoff (14:25-14:30, 5 minutes)
 
@@ -111,6 +170,6 @@ has checked that they are independent and fit the next block.
 |---|---|---|
 | JDK, Maven download or sample app fails | Inspect the supplied task and follow the lecturer's demonstrated baseline; write the local feature spec | You have not verified a working local app or bug fix |
 | Marketplace/plugin is unavailable | Inspect the available skill sources and draft a spec using ordinary prompts | Installation and `setup-matt-pocock-skills` verification remain pending |
-| Sample tasks are not published | Use the lecturer's approved brief when supplied; otherwise observe and draft questions | Do not invent a bug and claim to have fixed the required task |
+| AGEL copy lacks the pinned tasks | Report the publication mismatch and inspect the supplied brief with the lecturer | Do not clone a development copy or invent a replacement bug |
 
 No mandatory step uses Jira or the Atlassian Rovo Connector.

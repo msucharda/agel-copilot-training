@@ -24,10 +24,16 @@ The installed sharing-support plugin must supply
 `marketplace-create-skill` and `marketplace-submit-update`; these perform
 placement, validation, versioning and submission after `assistant-share`
 prepares the candidate. Confirm all three skills before the volunteer starts.
-The lecturer confirms the shared plugin and version in that same README
-section. Do not treat another existing plugin as the target without confirmation.
+Participant-authored skills go into the **sharing-support plugin** named in
+that same README, not into the vendored Matt Pocock collection. The final
+shared skill and higher published version are recorded there when known.
 The template's `assistant-share` instructions must point at this confirmed
 destination too; stop if they still name an old repository.
+
+Only the volunteer needs **Node.js 22+, npm and Git** for contribution checks.
+`npm ci` installs a locked npm dependency, so confirm an approved registry
+route or cache as well as branch/PR permission. Do not install tools or assume
+network approval on another participant's behalf.
 
 ## 1. Prepare a useful contribution (16:00-16:10, 10 minutes)
 
@@ -54,6 +60,9 @@ Compare it with the template's sharing instructions and stop if they differ.
 Confirm the exact destination with me before acting.
 Inspect the target plugin and its contribution instructions. Show me the
 files, English description and version/catalog changes before publishing.
+Use the marketplace's prescribed participant-contribution plugin, not the
+vendored collection. Record the base commit before editing. Run its npm
+tests and validators, including version comparison against that base.
 After I review the exact change, create one branch and one PR in that
 marketplace repository. Do not create a participant repository or merge.
 ```
@@ -63,15 +72,38 @@ step. Follow the skill's actual instructions; do not manually bypass a
 reported permission or validation failure.
 
 `assistant-share` preserves the personal original and prepares its candidate
-in `sharing/<name>/`. The marketplace skills own the final shared name.
+in `sharing/<name>/`. The marketplace skills place the approved candidate at
+`plugins/<sharing-support-plugin>/skills/<shared-skill>/SKILL.md`.
+Those fields refer to the central README setting and approved skill name.
+Use English kebab-case and matching directory/YAML `name`, with a `description`;
+do not use reserved `assistant-*` maintenance names or alter vendored files.
 Choose a name distinct from participants' personal example skills and record
 it in the README's Shared skill setting when confirmed. This prevents a personal copy
 from masking the plugin's skill during the update check.
 
-Show the PR URL, diff and validation result. The marketplace owner reviews
-the contribution, including the plugin/catalog version change, and decides
-whether to merge. The participant and workshop agents do not assume authority
-to merge on the owner's behalf.
+The create/submit skills own the marketplace clone and checks, not the
+personal assistant clone. In that marketplace clone, record the base commit
+**before edits**, then follow the documented commands:
+
+```shell
+npm ci
+npm test
+npm run validate
+node scripts/validate.mjs --base <recorded-base-commit-sha>
+```
+
+Replace the last field with the recorded SHA; do not compare a change with
+itself. Validation is offline only **after** dependency installation.
+Use the documented SemVer rule: fixes patch, new capabilities minor,
+incompatible changes major. Update the changed plugin's
+`.github/plugin/plugin.json` and its matching catalogue entry together.
+Derive the new version from the actual contribution base, not an assumed
+workshop version.
+
+Show the single PR against marketplace `main`, its diff, validation and
+green contribution CI. Follow its PR template. The marketplace owner reviews
+and decides whether to merge; the participant and workshop agents stop at
+the reviewable PR and do not assume that authority.
 
 **Checkpoint:** this is a real PR to the intended shared repository, created
 using `assistant-share`, not a screenshot of a prepared draft.
@@ -79,12 +111,12 @@ using `assistant-share`, not a screenshot of a prepared draft.
 ## 3. Update after publication (16:25-16:35, 10 minutes)
 
 Wait for the owner to confirm that the PR is merged and the new plugin
-version is published. Record its actual name/version in the README's Shared
-plugin setting. Follow the
+version is published. Record its actual version in the README's Shared
+plugin version setting. Follow the
 [marketplace update commands](../README.md#marketplace-commands), using that
 single source for the catalogue and plugin names. Participants who do not yet
 have the plugin use the install form documented there after refreshing the
-catalogue. Start a **new session**, inspect `/skills`, and invoke the recorded
+catalogue. Start a **new session**, inspect its available skills, and invoke the recorded
 shared skill on the same small example.
 
 **Checkpoint:** someone other than the author can load and use the published
@@ -107,6 +139,7 @@ The mandatory sharing exercise does not depend on Jira.
 | Problem | Continue with | What is not complete |
 |---|---|---|
 | Volunteer lacks marketplace branch/PR permission | Keep the local share preview; show the intended contribution to the owner | The live PR criterion is pending; do not switch to a personal repository |
+| Volunteer lacks Node/npm or dependency access | Keep the local candidate and arrange the missing prerequisite | Do not skip contribution checks or claim a validated PR |
 | `assistant-share` or network fails | Preserve the reviewed skill and contribution preview | A manually described PR is not the live `assistant-share` result |
 | Owner has not merged by 16:25 | Walk through the real PR and show the update procedure without claiming a new version | Participant plugin update must wait for publication |
 | Update succeeds but skill is missing | Start a new session and check the actual installed version/name | Do not report the shared skill available until it can be invoked |
