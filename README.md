@@ -53,7 +53,7 @@ inside the available viewport.
 - Exercise 4 is the single exception: one designated participant creates a
   branch and live PR in the shared marketplace, with the required permission.
 - Install the AGEL vendored Matt Pocock plugin, not the upstream
-  `mattpocock/skills` plugin alongside it.
+  `mattpocock-skills@mattpocock` plugin alongside it.
 - Jira through the Atlassian Rovo Connector is optional. Every mandatory
   exercise must also work without Jira.
 
@@ -77,29 +77,31 @@ Development repositories below are references, not participant clone targets.
 ## Marketplace values
 
 **This is the only place defining marketplace addresses and plugin names.**
-The maintainer is preparing a new marketplace; its address and the vendored
-Matt Pocock plugin name are not confirmed. The sharing destination also
-awaits confirmation. No participant should check permission against a guessed
-repository or submit a PR until the coordinator confirms these values.
+The user confirmed this new marketplace for both installation and the whole
+of exercise 4, including the `assistant-share` PR. Do not use the previous
+marketplace. Confirmed configuration is not proof of publication, participant
+access or a successful install; those live checks remain open.
 
 | Setting | Value | Evidence needed |
 |---|---|---|
-| Marketplace repository (`owner/repo`) | `TODO_MARKETPLACE_REPOSITORY` | Coordinator-confirmed address and sharing destination |
-| Installed catalogue name | `TODO_MARKETPLACE_NAME` | Name reported by the confirmed marketplace catalogue |
-| Matt Pocock plugin | `TODO_MATT_POCOCK_PLUGIN` | Published plugin containing all his vendored skills |
-| Sharing support plugin | `TODO_SHARING_SUPPORT_PLUGIN` | Provides `marketplace-create-skill` and `marketplace-submit-update` for the confirmed destination |
+| Marketplace repository (`owner/repo`) | [agel-data-and-ai-temp-poc/copilot-marketplace](https://github.com/agel-data-and-ai-temp-poc/copilot-marketplace) | Confirm participant access and permission to create a branch and PR here |
+| Installed catalogue name | `copilot-marketplace` | Confirmed by the coordinator; verify the installed catalogue |
+| Matt Pocock plugin | `matt-pocock-skills` | Contains all his vendored skills; verify publication and installation |
+| Sharing support plugin | `marketplace-maintenance` | Provides `marketplace-create-skill` and `marketplace-submit-update`; verify they target this marketplace |
 | Shared plugin and version | `TODO_SHARED_PLUGIN` | Name/version published after the exercise-4 PR is reviewed and merged |
 | Shared skill | `TODO_SHARED_SKILL` | Published name distinct from participants' personal example names |
 
 Other materials refer to these settings rather than repeating their values.
 Do not install an unrelated existing plugin as a substitute, or install the
-upstream `mattpocock/skills` plugin alongside the vendored copy.
+upstream `mattpocock-skills@mattpocock` plugin alongside the vendored copy.
 
 ### Marketplace commands
 
-In a Copilot app session, replace each bracketed field with its confirmed
-setting above. These are command shapes, **not executable final commands**.
-Verify them against the new marketplace's README before the workshop.
+In a Copilot app session, replace each bracketed field with its setting above.
+These are command shapes, **not executable commands until substituted**.
+The coordinator supplied the matching `copilot plugin ...` terminal commands;
+the forms below use the app session's `/plugin` entry point. Verify the app
+route against the new marketplace's README and Friday's test.
 
 ```text
 /plugin marketplace add <marketplace-repository>

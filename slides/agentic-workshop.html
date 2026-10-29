@@ -242,7 +242,7 @@
       <p class="eyebrow">01 / The outcome</p>
       <h2 id="heading-1">Own an assistant.<br>Not just a conversation.</h2>
       <p class="lead">A local repository holds the preferences and workflows you choose to keep. New sessions can reuse them.</p>
-      <div class="flow" aria-label="Assistant cycle">
+      <div class="flow" role="group" aria-label="Assistant cycle">
         <span>Try a real task</span><b aria-hidden="true">&rarr;</b>
         <span>Keep one lesson</span><b aria-hidden="true">&rarr;</b>
         <span>Use it again</span>
@@ -252,7 +252,7 @@
     <section class="slide" id="slide-2" aria-labelledby="heading-2">
       <p class="eyebrow">02 / The agentic loop</p>
       <h2 id="heading-2">Describe intent.<br>Demand evidence.</h2>
-      <div class="flow" aria-label="Work moves from intent to specification to task to change to evidence">
+      <div class="flow" role="group" aria-label="Work moves from intent to specification to task to change to evidence">
         <span>Intent</span><b aria-hidden="true">&rarr;</b>
         <span>Spec</span><b aria-hidden="true">&rarr;</b>
         <span>Task</span><b aria-hidden="true">&rarr;</b>
@@ -316,12 +316,12 @@
         <dt>Plugin</dt><dd>An installable package containing skills and related resources.</dd>
         <dt>Marketplace</dt><dd>A catalogue from which you discover, install and update plugins.</dd>
       </dl>
-      <div class="flow" aria-label="Marketplace catalogue leads to plugin installation and skills in a new session">
+      <div class="flow" role="group" aria-label="Marketplace catalogue leads to plugin installation and skills in a new session">
         <span>AGEL catalogue</span><b aria-hidden="true">&rarr;</b>
         <span>Install plugin</span><b aria-hidden="true">&rarr;</b>
         <span>New session: skills</span>
       </div>
-      <p class="takeaway">Use the AGEL vendored Matt Pocock plugin. Do not add upstream <code>mattpocock/skills</code> as a duplicate.</p>
+      <p class="takeaway">Use the AGEL vendored Matt Pocock plugin. Do not also install upstream <code>mattpocock-skills@mattpocock</code>: duplicate skills.</p>
     </section>
     <section class="slide" id="slide-7" aria-labelledby="heading-7">
       <p class="eyebrow">07 / Connectors</p>
@@ -379,7 +379,7 @@
     <section class="slide" id="slide-11" aria-labelledby="heading-11">
       <p class="eyebrow">11 / Shared lifecycle</p>
       <h2 id="heading-11">A PR is not yet<br>a published update.</h2>
-      <div class="flow" aria-label="Sharing moves through preview, PR, owner review and merge, then update and verification">
+      <div class="flow" role="group" aria-label="Sharing moves through preview, PR, owner review and merge, then update and verification">
         <span>Preview</span><b aria-hidden="true">&rarr;</b>
         <span><code>assistant-share</code> PR</span><b aria-hidden="true">&rarr;</b>
         <span>Owner review + merge</span><b aria-hidden="true">&rarr;</b>
@@ -439,7 +439,10 @@
 
       previous.addEventListener("click", () => navigate(current - 1, previous));
       next.addEventListener("click", () => navigate(current + 1, next));
-      window.addEventListener("hashchange", () => show(hashIndex(), false));
+      window.addEventListener("hashchange", () => {
+        if (window.location.hash === "#deck") return;
+        show(hashIndex(), false);
+      });
       document.addEventListener("keydown", (event) => {
         if (event.altKey || event.ctrlKey || event.metaKey ||
             event.target instanceof HTMLInputElement ||

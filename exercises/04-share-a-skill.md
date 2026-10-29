@@ -14,9 +14,10 @@ the change. An unmerged PR alone is not an available plugin update.
 The lecturer names the volunteer and confirms that their AGEL account may
 create a branch and PR in the **confirmed workshop marketplace**. Its address
 and plugin names are defined only in the
-[marketplace values](../README.md#marketplace-values). Until the destination
-is confirmed, keep this live step pending. Do not create a personal repository
-or use a fork or previous marketplace as a substitute.
+[marketplace values](../README.md#marketplace-values). The whole exercise,
+including this PR, uses that new marketplace. Access is still a live
+prerequisite; do not create a personal repository or use a fork or previous
+marketplace as a substitute.
 
 The personal assistant's source clone and `assistant-share` must be available.
 The installed sharing-support plugin must supply

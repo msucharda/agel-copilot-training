@@ -144,15 +144,17 @@ Open [the 12-slide deck](../slides/agentic-workshop.html).
 | 10:18-10:30 | Install the AGEL marketplace and vendored Matt Pocock plugin; open a new session and check skills. | "Install the AGEL copy only, not the upstream plugin as well." |
 
 Use the single [marketplace values and commands](../README.md#marketplace-values)
-section. The new address, catalogue and plugin names await confirmation.
-Do not reuse a previous marketplace address or execute its unresolved
-command shapes. Check the confirmed marketplace's README before installation.
+section. The address, catalogue and plugin names are confirmed there.
+Do not reuse a previous marketplace address or execute command shapes before
+substituting the settings. Check the new marketplace's README and verify the
+app installation route before the workshop; publication/access remain untested.
 
 Start a new session and inspect `/skills`. Confirm the actual vendored skills,
 including the ones required by the app exercise, plus `marketplace-create-skill`
 and `marketplace-submit-update` for sharing. Record the plugin versions.
 If the catalogue does not contain the expected plugin, stop rather than
-installing another plugin as a substitute or adding upstream `mattpocock/skills`.
+installing another plugin as a substitute or adding upstream
+`mattpocock-skills@mattpocock`.
 
 **Fallback:** the deck is self-contained and opens offline. If marketplace
 registration or installation fails, show the reviewed local skill source and
@@ -297,15 +299,16 @@ Verified against the maintainer's read-only local references:
   `plugins/marketplace-maintenance/skills/marketplace-install/SKILL.md` and
   `.github/plugin/marketplace.json`: app `/plugin` install/update, new-session
   availability and versioned plugin publication. This is prior reference
-  evidence, not the pending workshop marketplace's address or an installation
+  evidence, not the confirmed workshop marketplace's address or an installation
   target.
 
 The template instructions are aligned with
 [msucharda/copilot-assistant-template#2](https://github.com/msucharda/copilot-assistant-template/pull/2):
 `.agents/skills/` source, local commits, preview `gh skill install`,
 `AGENTS.md` scope and the two marketplace-maintenance handoff skills.
-The published app PR, confirmed marketplace and Friday's observations still
-need integration. Align the template's sharing target with the coordinator's
-confirmation before exercise 4. The app `/plugin` route is documented by the
+The published app PR, new marketplace implementation and Friday's observations
+still need integration. The coordinator has confirmed the new settings in
+the README for both installation and exercise 4; align the template's
+sharing target before live use. The app `/plugin` route is documented by the
 legacy reference, but the new marketplace and AGEL desktop-app test remain
 unverified. These notes are not a Friday checklist.

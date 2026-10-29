@@ -26,7 +26,7 @@ Please request missing permissions before Monday.
 We will explain skills and Copilot Projects from scratch. Work is individual
 and local; do not create a participant repository on GitHub. We install the
 AGEL skills together, so do not separately install the upstream
-`mattpocock/skills` plugin. Jira access through the Atlassian Rovo Connector
+`mattpocock-skills@mattpocock` plugin. Jira access through the Atlassian Rovo Connector
 is optional.
 
 If a preparation check fails, send its error text to **Martin Sucharda** at

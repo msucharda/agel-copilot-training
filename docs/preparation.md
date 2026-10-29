@@ -30,7 +30,7 @@ Do not wait until the workshop to request access or a licence.
 | JDK 21, not only a JRE | Run `java -version; javac -version` in PowerShell | Both commands report major version `21` |
 | Template access and GitHub connectivity | Run the test clone below | Clone completes without an authentication or network error |
 | Maven Central connectivity | Open <https://repo.maven.apache.org/maven2/> on the workshop network | The Maven repository index is reachable, not blocked by a proxy page |
-| Marketplace contribution permission | After the [marketplace destination](../README.md#marketplace-values) is confirmed, ask the maintainer to confirm that your AGEL account can create a branch and PR there | The marketplace owner confirms the required permission; only one volunteer uses it live |
+| Marketplace contribution permission | Ask the maintainer to confirm that your AGEL account can create a branch and PR in the [workshop marketplace](../README.md#marketplace-values) | The marketplace owner confirms the required permission; only one volunteer uses it live |
 | Hybrid participation | Open the workshop invitation in your calendar and check its Teams joining instructions and your audio | You can join and hear the presenter; use the calendar invitation, not a meeting link in this repository |
 
 The JDK check above uses PowerShell command separators. On another shell,
@@ -61,14 +61,15 @@ Do not fork the template or create a remote participant repository.
 ## Skills and marketplace
 
 We install the AGEL marketplace and the vendored Matt Pocock plugin together
-at 10:00. Do not install the upstream `mattpocock/skills` plugin in addition:
+at 10:00. Do not install the upstream `mattpocock-skills@mattpocock` plugin in addition:
 it would duplicate skill names. You do not need to learn skills or Copilot
 Projects in advance.
 
 For exercise 4, participants need permission to create a branch and PR in
 the workshop marketplace. Its address and plugin names live only in the
-[marketplace values](../README.md#marketplace-values). Wait for the maintainer
-to confirm the destination and access; one volunteer performs the single live PR.
+[marketplace values](../README.md#marketplace-values). The destination is
+confirmed; participant access remains to be verified. One volunteer performs
+the single live PR there.
 
 ## Optional Jira
 

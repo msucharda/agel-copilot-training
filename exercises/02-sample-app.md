@@ -21,7 +21,7 @@ lecturer; do not run the placeholders or invent task files.
 | Larger-feature brief in `.scratch/` | `TODO_FEATURE_TASK` |
 
 The AGEL vendored Matt Pocock plugin must be installed from the morning
-theory block. Do not install `mattpocock/skills` separately.
+theory block. Do not also install the upstream `mattpocock-skills@mattpocock` plugin.
 
 ## 1. Establish the baseline (13:00-13:15, 15 minutes)
 
