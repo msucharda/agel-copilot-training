@@ -143,7 +143,7 @@ Open [the 12-slide deck](../slides/agentic-workshop.html).
 |---|---|---|
 | 10:00-10:05 | 1-3: outcome, intent loop, human decisions | "Name the outcome and the evidence, not just the coding activity." |
 | 10:05-10:10 | 4-6: knowledge layers and packaging | "A skill is a repeatable workflow; a plugin distributes skills; a marketplace lists plugins." |
-| 10:10-10:15 | 7-9: Connector, skill contract, lifecycle | "A Connector supplies permitted external information; it is not the workflow itself." |
+| 10:10-10:15 | 7-9: Connector, skill contract and invocation modes, lifecycle | "A Connector supplies information. A model selects eligible skills by description; only the user invokes user-only skills with a slash." |
 | 10:15-10:18 | 10-12: Project worktrees, sharing, day map | "Create your own Project later; first build the assistant." |
 | 10:18-10:30 | Install the AGEL marketplace and vendored Matt Pocock plugin; open a new session and check skills. | "Install the AGEL copy only, not the upstream plugin as well." |
 
@@ -158,13 +158,21 @@ Start a new session and inspect its available skills. Confirm the source
 versions and 27-skill vendored collection from the README, including the
 named setup/planning, diagnosis/TDD/review and contribution skills.
 Record the actual installed versions; do not assume the CLI menus are app controls.
+At slide 8, explain `disable-model-invocation: true`: the participant must
+invoke a user-only skill such as `/setup-matt-pocock-skills` directly.
+An ordinary request for the model to use it is not equivalent. Each planning
+command in exercise 2 is a separate participant invocation, not an automatic
+model chain. Desktop slash invocation with task text works for the maintainer's
+tested personal skill; Friday must verify the plugin-provided skills.
 If the catalogue does not contain the expected plugin, stop rather than
 installing another plugin as a substitute or adding upstream
 `mattpocock-skills@mattpocock`.
 
 **Fallback:** the deck is self-contained and opens offline. If marketplace
 registration or installation fails, show the reviewed local skill source and
-its expected trigger; retain the installation as incomplete. Do not spend the
+its expected trigger; retain the installation as incomplete. If plugin-backed
+slash invocation is unavailable, inspect the contract without claiming the skill ran
+or changing workshop clients. Do not spend the
 break debugging every account. Jira/Connector availability has no bearing on
 the installation checkpoint.
 
@@ -213,15 +221,17 @@ use the reviewed Java app's README. Do not improvise its build command.
 | Time | Facilitation cue | Checkpoint |
 |---|---|---|
 | 13:00-13:15 | Clone the AGEL app linked in exercise 2; run `.\mvnw.cmd verify`, then `.\mvnw.cmd spring-boot:run` (Unix: `./mvnw`). Inspect health/Swagger with the documented local accounts. | Observed Java 21 baseline; stop/restart the manual server when code changes. |
-| 13:15-13:25 | Run `setup-matt-pocock-skills`; choose local Markdown tracking and inspect `docs/agents/issue-tracker.md` and `docs/agents/domain.md`. | Repository setup versus plugin installation; no remote tracker writes. |
+| 13:15-13:25 | Participant invokes `/setup-matt-pocock-skills`; choose local Markdown tracking and inspect `docs/agents/issue-tracker.md` and `docs/agents/domain.md`. | Repository setup versus plugin installation; plugin-backed slash route must be verified, no remote tracker writes. |
 | 13:25-14:00 | Use `diagnosing-bugs` and `tdd` on `.scratch/back-to-back-bookings/issues/01-fix-boundary-conflict.md`; reproduce 409 instead of 201, fix and verify. | Correct regression, not an auth/CSRF failure; true overlaps still conflict. |
-| 14:00-14:25 | Read `.scratch/recurring-bookings/idea.md`; use `grill-with-docs`, `to-spec`, then `to-tickets` after spec review. | Local `spec.md` and separate issue files; no implementation or remote tracker writes. |
+| 14:00-14:25 | Read `.scratch/recurring-bookings/idea.md`; participant separately invokes `/grill-with-docs`, then `/to-spec`, then `/to-tickets` after spec review. | Review each result before the next invocation; local `spec.md` and separate issue files, no implementation or remote tracker writes. |
 | 14:25-14:30 | Inspect one bug result and one ticket's acceptance criteria. | Participants can describe the evidence and the remaining work. |
 
 **Fallback:** if Java/Maven or network fails, use the lecturer's observed
 baseline and task text to draft the spec and reproduction plan. If the
 marketplace is down, inspect reviewed skill sources and use plain prompts
-without calling that a completed skill installation. If the app tasks remain
+without calling that a completed skill installation or user-only invocation.
+Use the same fallback if the desktop app does not recognize the slash command.
+If the app tasks remain
 unpublished, label the exercise blocked rather than inventing acceptance
 criteria. Jira/Connector failures do not change this block.
 

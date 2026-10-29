@@ -302,7 +302,7 @@
         </div>
         <div class="column">
           <h3>Skill</h3>
-          <p>A repeatable workflow, loaded when its trigger matches.</p>
+          <p>A repeatable workflow, selected by the model or invoked by you.</p>
           <p><code>Turn supplied bug notes into a reproducible report.</code></p>
         </div>
       </div>
@@ -342,12 +342,12 @@
       <p class="eyebrow">08 / A skill's contract</p>
       <h2 id="heading-8">Make the workflow<br>testable.</h2>
       <dl>
-        <dt>Trigger</dt><dd>When should this workflow run, and when should it not?</dd>
+        <dt>Trigger</dt><dd>Model-selected: match the description. User-only: invoke with a slash.</dd>
         <dt>Input</dt><dd>What must the user supply? What happens if a fact is missing?</dd>
         <dt>Steps</dt><dd>Which observations and decisions must happen before the output?</dd>
         <dt>Output</dt><dd>What exact result can another person inspect?</dd>
       </dl>
-      <p class="takeaway">Try one matching prompt, one missing-input case and one unrelated prompt.</p>
+      <p class="takeaway"><code>disable-model-invocation: true</code> means user-only: <code>/setup-matt-pocock-skills</code>. Plugin-backed invocation awaits Friday's trial.</p>
     </section>
     <section class="slide" id="slide-9" aria-labelledby="heading-9">
       <p class="eyebrow">09 / Personal lifecycle</p>

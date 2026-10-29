@@ -70,7 +70,7 @@ after Friday's test. Do not substitute development copies for AGEL targets.
 | `TODO_FRIDAY_RESULTS` | Results of Friday's rehearsal and resulting preparation changes | Coordinator |
 | `TODO_PARTICIPANT_OS` | Participant operating systems and the observed wrapper/install procedures | Coordinator |
 | `TODO_AGEL_ACCESS` | Published AGEL copies and participant account access | Coordinator |
-| `TODO_DESKTOP_PLUGIN_TRIAL` | Actual desktop Customize controls, install/update route and fresh-session skill discovery | Lecturers |
+| `TODO_DESKTOP_PLUGIN_TRIAL` | Actual desktop Customize controls, install/update route, fresh-session discovery and manual-only slash invocation of plugin-provided skills | Lecturers |
 | `TODO_VOLUNTEER` | One participant with marketplace branch/PR permission, Node.js 22+ and npm | Maintainer |
 | `TODO_NPM_ACCESS` | That volunteer can complete `npm ci` using an approved npm registry route or cache | Volunteer / AGEL IT |
 
@@ -121,6 +121,8 @@ Their exact route and behavior remain part of the desktop-plugin trial above; a 
 command being documented is not evidence that the desktop controls work.
 Do not treat the interactive CLI's `/plugin` or `/skills` as verified
 desktop-app commands, or switch participants to another client.
+For lecturer-only CLI skill checks, use interactive mode, not non-interactive
+`-p` invocation. This does not change the workshop client.
 
 These are the new marketplace's documented **terminal** commands, for the
 lecturer to verify through the app's session terminal before live use.
@@ -137,7 +139,7 @@ copilot plugin list
 
 Start a fresh desktop session. Inspect its available skills and confirm
 `marketplace-install`, `marketplace-create-skill`, `marketplace-submit-update`,
-`setup-matt-pocock-skills`, `grill-with-docs`, `to-spec`, `to-tickets`,
+`/setup-matt-pocock-skills`, `/grill-with-docs`, `/to-spec`, `/to-tickets`,
 `diagnosing-bugs`, `tdd` and `code-review`. Inspect the actual plugin versions;
 a name in these notes does not prove installation.
 
@@ -154,6 +156,26 @@ The source also documents `copilot plugin update matt-pocock-skills` for
 changes to the vendored plugin; a participant skill must not modify that
 vendored collection. Record the observed higher shared-plugin version,
 start a fresh session and invoke the recorded shared skill.
+
+### Skill invocation
+
+Some skills are model-selected when their description matches the task.
+Others declare `disable-model-invocation: true`: only the user invokes them
+with a slash command. Naming such a skill in an ordinary prompt does not
+let the model invoke it. Preserve the vendored frontmatter.
+
+For exercise 2, the participant submits `/setup-matt-pocock-skills`,
+then separately invokes `/grill-with-docs`, `/to-spec` and `/to-tickets`,
+reviewing each result before the next command. Do not ask the model to
+chain these user-only skills.
+
+The desktop app supports explicit slash invocation with task text after the
+name, for example `/grill-with-docs <task>`. The maintainer verified this with
+a personal skill from `personal-agents`.
+**Instructor note:** Friday must verify invocation of the plugin-provided
+skills as well; the personal-skill result does not establish that.
+If a plugin skill cannot be invoked, use the exercise fallback and mark that
+checkpoint incomplete. Do not switch participants to another client.
 
 ## Template alignment
 

@@ -21,6 +21,12 @@ contains the [reviewed baseline](../README.md#sample-app).
 The AGEL vendored Matt Pocock plugin must be installed from the morning
 theory block. Do not also install the upstream `mattpocock-skills@mattpocock` plugin.
 
+Use the desktop app's explicit slash invocation with task text after the name.
+**Instructor note:** the maintainer verified that route with a personal skill;
+Friday must still verify the plugin-provided skills used here. If a plugin
+skill cannot be invoked, use the fallback and mark that checkpoint incomplete.
+Do not ask the model to load a user-only skill or switch to another client.
+
 ## 1. Establish the baseline (13:00-13:15, 15 minutes)
 
 If you do not already have the sample clone, use the AGEL copy:
@@ -68,10 +74,11 @@ Do not create a GitHub repository, fork, PR or remote branch.
 
 ## 2. Set up the coding workflow (13:15-13:25, 10 minutes)
 
-Ask in the sample-app session:
+Invoke the setup skill yourself in the sample-app session:
 
 ```text
-Use setup-matt-pocock-skills for this repository. Read its current
+/setup-matt-pocock-skills Set up this repository.
+Read its current
 instructions and README first. Explain the proposed changes, then configure
 the repository to use the AGEL vendored Matt Pocock skills.
 Choose LOCAL MARKDOWN as the issue tracker, not GitHub or Jira even though
@@ -85,7 +92,7 @@ repository or start unrelated work.
 
 Inspect the diff and verify the resulting instructions in a new session.
 Inspect the session's available skills: `diagnosing-bugs`, `tdd`,
-`grill-with-docs`, `to-spec`, `to-tickets` and `code-review`. The local-tracker
+`/grill-with-docs`, `/to-spec`, `/to-tickets` and `code-review`. The local-tracker
 template is supported by the installed setup skill; do not use its GitHub
 tracker template for this exercise.
 
@@ -134,24 +141,43 @@ you also check the changed behavior interactively.
 
 Read `.scratch/recurring-bookings/idea.md`. It is only an idea: weekly
 meetings, changes/cancellation and visible conflicts. A specification and
-tickets do not exist yet. Ask:
+tickets do not exist yet. Each block below is a separate participant invocation.
+Do not ask the model to invoke or chain these user-only skills.
+
+**First, invoke clarification and answer its questions:**
 
 ```text
-Read .scratch/recurring-bookings/idea.md and our local issue-tracker docs.
-Use grill-with-docs to clarify recurrence, timezone/DST, limits, conflicts,
-edits/cancellation and ownership without inventing decisions.
-Use to-spec to write .scratch/recurring-bookings/spec.md with bounded,
-observable acceptance criteria. After I review it, use to-tickets to write
-one file per ticket in .scratch/recurring-bookings/issues/<NN>-<slug>.md,
-with explicit dependencies and completion checks.
-"Publish" means local Markdown here. Do not create remote tracker issues,
-implement the feature, start sessions or push.
+/grill-with-docs Clarify .scratch/recurring-bookings/idea.md.
+Read our local issue-tracker docs.
+Clarify recurrence, timezone/DST, limits, conflicts, edits/cancellation and
+ownership without inventing decisions. Keep work local; do not implement.
+```
+
+**After clarification, invoke specification:**
+
+```text
+/to-spec Write .scratch/recurring-bookings/spec.md.
+Read our agreed recurring-bookings decisions and local issue-tracker docs.
+Use bounded, observable acceptance criteria.
+"Publish" means this local Markdown file, not a remote issue.
+Stop after the specification; do not implement.
+```
+
+**Review the specification before invoking ticket creation:**
+
+```text
+/to-tickets Split the approved .scratch/recurring-bookings/spec.md.
+Read our local tracker docs.
+Write one file per ticket in
+.scratch/recurring-bookings/issues/<NN>-<slug>.md with explicit dependencies
+and completion checks. Use only local Markdown. Do not create remote tracker
+issues, implement the feature, start sessions or push.
 ```
 
 Review at least one ambiguous case and one dependency. If the agent proposes
 more work than you can review in five minutes, reduce the scope.
 Inspect both the local spec and separate ticket files; a combined prose list
-alone is not the documented `to-tickets` output. Do not create GitHub or Jira
+alone is not the documented `/to-tickets` output. Do not create GitHub or Jira
 tickets for this exercise.
 
 ## 5. Inspect the handoff (14:25-14:30, 5 minutes)
@@ -169,7 +195,8 @@ has checked that they are independent and fit the next block.
 | Problem | Continue with | What is not complete |
 |---|---|---|
 | JDK, Maven download or sample app fails | Inspect the supplied task and follow the lecturer's demonstrated baseline; write the local feature spec | You have not verified a working local app or bug fix |
-| Marketplace/plugin is unavailable | Inspect the available skill sources and draft a spec using ordinary prompts | Installation and `setup-matt-pocock-skills` verification remain pending |
+| Marketplace/plugin is unavailable | Inspect the available skill sources and draft a spec using ordinary prompts | Installation and `/setup-matt-pocock-skills` verification remain pending |
+| Desktop app does not recognize a slash command | Draft the local spec/tickets with ordinary prompts and inspect the skill contract with the lecturer | User-only skill invocation is unverified; do not claim that skill ran |
 | AGEL copy lacks the pinned tasks | Report the publication mismatch and inspect the supplied brief with the lecturer | Do not clone a development copy or invent a replacement bug |
 
 No mandatory step uses Jira or the Atlassian Rovo Connector.
