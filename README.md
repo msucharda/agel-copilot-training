@@ -71,7 +71,7 @@ after Friday's test. Do not substitute development copies for AGEL targets.
 | `TODO_PARTICIPANT_OS` | Participant operating systems and the observed wrapper/install procedures | Coordinator |
 | `TODO_AGEL_ACCESS` | Published AGEL copies and participant account access | Coordinator |
 | `TODO_DESKTOP_PLUGIN_TRIAL` | Actual desktop UI labels, install/update route, fresh-session discovery and manual-only slash invocation of plugin-provided skills | Lecturers |
-| `TODO_VOLUNTEER` | One participant with marketplace branch/PR permission, Node.js 22+ and npm | Maintainer |
+| `TODO_VOLUNTEER` | One participant with marketplace branch/PR permission, Node.js 22+, npm and, on Linux/macOS, PowerShell 7+ (`pwsh`) | Maintainer |
 | `TODO_NPM_ACCESS` | That volunteer can complete `npm ci` using an approved npm registry route or cache | Volunteer / AGEL IT |
 
 ## Sample app

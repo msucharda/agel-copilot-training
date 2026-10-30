@@ -95,7 +95,13 @@ additional installation requirement for everyone. If you volunteer, check
 do not assume permission to install software. The marketplace's `npm ci`
 also needs its npm dependency download or an approved cache; confirm that
 route with the maintainer/AGEL IT. GitHub and Maven reachability alone do not
-establish it. Other participants only install/update the published plugin.
+establish it.
+
+If you are that volunteer on Linux or macOS, marketplace tests also require
+**PowerShell 7+**, available as `pwsh` on PATH. Check `pwsh --version` and
+report a missing command or a version below 7. Windows volunteers use the
+built-in Windows PowerShell; no additional PowerShell installation is required.
+Other participants only install/update the published plugin.
 
 ## Optional Jira
 
