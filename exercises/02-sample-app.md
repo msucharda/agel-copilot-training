@@ -15,8 +15,8 @@ procedure is not a fallback for this exercise.
 ## Before you start
 
 Use **JDK 21** and the Maven wrapper shipped with the app. The integrated
-source uses Spring Boot **4.1.2**. The lecturer must confirm that the AGEL copy
-contains the [reviewed baseline](../README.md#sample-app).
+source uses Spring Boot **4.1.2**. The lecturer must confirm that the public
+workshop repository contains the [reviewed baseline](../README.md#sample-app).
 **Linux only:** the wrapper also needs `unzip` and either `sha256sum` or
 `shasum`; complete the conditional [preparation check](../docs/preparation.md#checks)
 before running it. These utilities are not Windows prerequisites.
@@ -37,10 +37,10 @@ Do not ask the model to load a user-only skill or switch to another client.
 
 ## 1. Establish the baseline (13:00-13:15, 15 minutes)
 
-If you do not already have the sample clone, use the AGEL copy:
+If you do not already have the sample clone, use the public workshop repository:
 
 ```shell
-git clone https://github.com/agel-data-and-ai-temp-poc/copilot-workshop-room-booking.git agel-room-booking
+git clone https://github.com/msucharda/copilot-workshop-room-booking.git agel-room-booking
 cd agel-room-booking
 git status --short
 ```
@@ -205,6 +205,6 @@ has checked that they are independent and fit the next block.
 | JDK, Maven download or sample app fails | Inspect the supplied task and follow the lecturer's demonstrated baseline; write the local feature spec | You have not verified a working local app or bug fix |
 | Marketplace/plugin is unavailable | Inspect the available skill sources and draft a spec using ordinary prompts | Installation and `/setup-matt-pocock-skills` verification remain pending |
 | Desktop app does not recognize a slash command | Draft the local spec/tickets with ordinary prompts and inspect the skill contract with the lecturer | User-only skill invocation is unverified; do not claim that skill ran |
-| AGEL copy lacks the pinned tasks | Report the publication mismatch and inspect the supplied brief with the lecturer | Do not clone a development copy or invent a replacement bug |
+| Public workshop repository lacks the pinned tasks | Report the publication mismatch and inspect the supplied brief with the lecturer | Do not clone a different repository or invent a replacement bug |
 
 No mandatory step uses Jira or the Atlassian Rovo Connector.

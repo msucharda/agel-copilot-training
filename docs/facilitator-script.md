@@ -14,8 +14,8 @@ to produce the most code.
 - This is a draft. Resolve the [integration values](../README.md#release-status-and-unresolved-integration-values)
   before presenting the dependent steps. Never type a `TODO` command live.
 - The [pinned Java app and marketplace sources](../README.md#sample-app) are
-  integrated for v0. Confirm the AGEL copies contain them; source review is
-  not a participant installation result.
+  integrated for v0. Confirm the public workshop repositories contain them;
+  source review is not a participant installation result.
 - Pre-arrange one contribution volunteer with branch/PR permission, Node.js
   22+, npm and an approved dependency-download/cache route. These extra
   contribution tools are not required from everyone.
@@ -145,7 +145,7 @@ Open [the 12-slide deck](../slides/agentic-workshop.html).
 | 10:05-10:10 | 4-6: knowledge layers and packaging | "A skill is a repeatable workflow; a plugin distributes skills; a marketplace lists plugins." |
 | 10:10-10:15 | 7-9: Connector, skill contract and invocation modes, lifecycle | "A Connector supplies information. A model selects eligible skills by description; only the user invokes user-only skills with a slash." |
 | 10:15-10:18 | 10-12: Project worktrees, sharing, day map | "Create your own Project later; first build the assistant." |
-| 10:18-10:30 | Use the desktop marketplace/plugin UI to install the AGEL marketplace and vendored Matt Pocock plugin; open a new session and check skills. | "The app UI is primary; install the AGEL copy only, not the upstream duplicate." |
+| 10:18-10:30 | Use the desktop marketplace/plugin UI to install the AGEL marketplace and vendored Matt Pocock plugin; open a new session and check skills. | "The app UI is primary; install the workshop copy from the public marketplace in msucharda, not the upstream duplicate." |
 
 Use the single [marketplace values and installation procedure](../README.md#marketplace-values)
 section. The address, catalogue and plugin names are confirmed there.
@@ -331,14 +331,16 @@ The template instructions are aligned with
 `.agents/skills/` source, local commits, preview `gh skill install`,
 `AGENTS.md` scope and the two marketplace-maintenance handoff skills.
 The two supplied implementation PRs are integrated at their pinned heads.
-Friday's observations and AGEL publication/access remain unverified.
-The template's sharing target is verified against
-the confirmed settings at the source head recorded in the workshop README.
+Friday's observations and participant access remain unverified.
+The template and marketplace pins recorded in the workshop README predate
+the public-destination alignment. Recheck the template's sharing target
+against the confirmed marketplace settings before live use.
 Reported desktop 1.1.33 Windows evidence confirms bundled `gh` 2.102.1/Git 2.56,
 marketplace management and shared CLI/app `installedPlugins` configuration,
 but not exact UI labels. The SDK CLI executable is not on the agent PATH.
 The app README also requires Linux `unzip` plus `sha256sum` or `shasum`;
 preparation and exercise 2 now state that conditional requirement.
-Recheck the published AGEL copy before live use. The exact UI controls,
-participant installation and update trial remain TODOs in the release ledger.
+Recheck the public workshop repositories in `msucharda` before live use.
+The exact UI controls, participant installation and update trial remain
+TODOs in the release ledger.
 These notes are not a Friday checklist.

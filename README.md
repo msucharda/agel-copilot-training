@@ -61,15 +61,15 @@ inside the available viewport.
 
 **Draft for review, not the final preparation message.** Do not send the email
 or run a command containing `TODO` or an unresolved `<placeholder>`.
-The source inputs below are integrated for v0; publication and participant
-results are not yet observed. The maintainer resolves the remaining values
-after Friday's test. Do not substitute development copies for AGEL targets.
+The source inputs below are integrated for v0; participant results are not
+yet observed. The maintainer resolves the remaining values after Friday's
+test. Use the public workshop repositories in `msucharda` listed below.
 
 | Marker | Required value / evidence | Owner |
 |---|---|---|
 | `TODO_FRIDAY_RESULTS` | Results of Friday's rehearsal and resulting preparation changes | Coordinator |
 | `TODO_PARTICIPANT_OS` | Participant operating systems and the observed wrapper/install procedures | Coordinator |
-| `TODO_AGEL_ACCESS` | Published AGEL copies and participant account access | Coordinator |
+| `TODO_AGEL_ACCESS` | Participant account access to the public workshop repositories in `msucharda` | Coordinator |
 | `TODO_DESKTOP_PLUGIN_TRIAL` | Actual desktop UI labels, install/update route, fresh-session discovery and manual-only slash invocation of plugin-provided skills | Lecturers |
 | `TODO_VOLUNTEER` | One participant with marketplace branch/PR permission, Node.js 22+, npm and, on Linux/macOS, PowerShell 7+ (`pwsh`) | Maintainer |
 | `TODO_NPM_ACCESS` | That volunteer can complete `npm ci` using an approved npm registry route or cache | Volunteer / AGEL IT |
@@ -77,9 +77,9 @@ after Friday's test. Do not substitute development copies for AGEL targets.
 ## Sample app
 
 Participant repository:
-[agel-data-and-ai-temp-poc/copilot-workshop-room-booking](https://github.com/agel-data-and-ai-temp-poc/copilot-workshop-room-booking).
+[msucharda/copilot-workshop-room-booking](https://github.com/msucharda/copilot-workshop-room-booking).
 The integrated source is pinned at
-`316a0f6a2725c43bd70c6c7b721b1f5f7fb37e7b`, not yet evidence of an AGEL release.
+`316a0f6a2725c43bd70c6c7b721b1f5f7fb37e7b`, not yet evidence of a participant installation.
 It uses **Java 21 and Spring Boot 4.1.2**, Spring Data JPA, Flyway and local H2,
 with a REST API, Swagger UI and HTTP Basic roles `EMPLOYEE`/`FACILITY_ADMIN`.
 No Docker, database server or separate Maven installation is needed.
@@ -96,13 +96,14 @@ alternative supplied task, not a simultaneous second fix for the booking bug.
 
 **This is the only place defining marketplace addresses and plugin names.**
 The user confirmed this new marketplace for both installation and the whole
-of exercise 4, including the `assistant-share` PR. Do not use the previous
-marketplace. Confirmed configuration is not proof of publication, participant
-access or a successful install; those live checks remain open.
+of exercise 4, including the `assistant-share` PR. It is hosted publicly in
+`msucharda`; do not use the previous marketplace. Confirmed configuration
+is not proof of participant access or a successful install; those live
+checks remain open.
 
 | Setting | Value | Evidence needed |
 |---|---|---|
-| Marketplace repository (`owner/repo`) | [agel-data-and-ai-temp-poc/copilot-marketplace](https://github.com/agel-data-and-ai-temp-poc/copilot-marketplace) | Confirm participant access and permission to create a branch and PR here |
+| Marketplace repository (`owner/repo`) | [msucharda/copilot-marketplace](https://github.com/msucharda/copilot-marketplace) | Confirm participant access and permission to create a branch and PR here |
 | Installed catalogue name | `copilot-marketplace` | Confirmed by the coordinator; verify the installed catalogue |
 | Matt Pocock plugin | `matt-pocock-skills` | Source version **0.1.0**, 27 vendored skills |
 | Sharing support plugin | `marketplace-maintenance` | Source version **0.4.2**; also the target for participant-authored contributions |
@@ -158,7 +159,7 @@ shows the skill enabled. Use the Matt Pocock workshop skills **only in the
 desktop app**; do not treat CLI as a fallback for setup or planning.
 
 ```shell
-copilot plugin marketplace add agel-data-and-ai-temp-poc/copilot-marketplace
+copilot plugin marketplace add msucharda/copilot-marketplace
 copilot plugin marketplace browse copilot-marketplace
 copilot plugin install marketplace-maintenance@copilot-marketplace
 copilot plugin install matt-pocock-skills@copilot-marketplace
@@ -206,21 +207,23 @@ checkpoint incomplete. Do not switch participants to another client.
 The template interface is aligned with
 [msucharda/copilot-assistant-template#2](https://github.com/msucharda/copilot-assistant-template/pull/2):
 the participant clone URL is
-`https://github.com/agel-data-and-ai-temp-poc/copilot-assistant-template.git`,
+`https://github.com/msucharda/copilot-assistant-template.git`,
 skills live in `.agents/skills/`, and personal installation uses `gh skill
-install --from-local`. The published AGEL clone and desktop-app installation
+install --from-local`. The public template clone and desktop-app installation
 still need Friday's live verification. The app bundles `gh`; do not add a
 separate CLI prerequisite to the preparation message.
-At template head `ef065a882541fdfa663e017050b76b06b33d44c3`, both its README
-and `assistant-share` use the confirmed marketplace destination above.
-Recheck the published template version before the live exercise.
+Template source is pinned at `ef065a882541fdfa663e017050b76b06b33d44c3`.
+This pin and the marketplace source pin predate the public-destination
+alignment. Recheck the template README, `assistant-share` and marketplace
+configuration against the destination above before the live exercise.
 
 ## Publication
 
-This repository is the development copy. The coordinator publishes approved
-milestones of `main` to the internal
-`agel-data-and-ai-temp-poc/copilot-workshop` repository. These materials do
-not perform that publication and do not include the Friday test-run checklist.
+Workshop materials are hosted publicly in
+[msucharda/agel-copilot-training](https://github.com/msucharda/agel-copilot-training).
+The sample app, assistant template and marketplace are also public repositories
+in `msucharda`, linked above. Participants use these repositories directly.
+These materials do not include the Friday test-run checklist.
 
 The Friday review milestone is 30 October at 10:00 CET for preparation and
 exercise 1. Preparation is finalized after the 13:30 test and sent by the
