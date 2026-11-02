@@ -48,19 +48,19 @@ The Maven Central browser check verifies reachability, not a successful app
 build; the sample app build is checked in exercise 2. That app uses Java 21
 and its bundled Maven wrapper; do not install Maven or a database server
 separately. The [sample-app instructions](../exercises/02-sample-app.md)
-contain the actual AGEL clone and Windows/Unix wrapper commands.
+contain the public workshop clone and Windows/Unix wrapper commands.
 Python is not required.
 
 ### Test clone
 
-The URL below is the workshop target documented by the assistant template.
-The maintainer must confirm publication and AGEL account access after Friday's
-test before sending this page.
+The URL below is the public workshop template in `msucharda`.
+The maintainer must confirm AGEL account access after Friday's test before
+sending this page.
 
 Choose a writable local parent directory in a terminal, then run:
 
 ```shell
-git clone https://github.com/agel-data-and-ai-temp-poc/copilot-assistant-template.git agel-assistant
+git clone https://github.com/msucharda/copilot-assistant-template.git agel-assistant
 cd agel-assistant
 git status --short
 ```
